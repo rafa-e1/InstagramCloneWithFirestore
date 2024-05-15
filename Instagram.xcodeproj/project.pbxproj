@@ -13,6 +13,12 @@
 		05E3DC3F2BF44C8800D59D64 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 05E3DC3E2BF44C8800D59D64 /* Base */; };
 		05E3DC412BF44C8900D59D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05E3DC402BF44C8900D59D64 /* Assets.xcassets */; };
 		05E3DC442BF44C8900D59D64 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 05E3DC432BF44C8900D59D64 /* Base */; };
+		05E3DC522BF4511D00D59D64 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC512BF4511D00D59D64 /* MainTabBarController.swift */; };
+		05E3DC542BF4517700D59D64 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC532BF4517700D59D64 /* FeedController.swift */; };
+		05E3DC562BF4518100D59D64 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC552BF4518100D59D64 /* SearchController.swift */; };
+		05E3DC582BF4518A00D59D64 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC572BF4518A00D59D64 /* ImageSelectorController.swift */; };
+		05E3DC5A2BF4519300D59D64 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC592BF4519300D59D64 /* NotificationController.swift */; };
+		05E3DC5C2BF4519900D59D64 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC5B2BF4519900D59D64 /* ProfileController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		05E3DC402BF44C8900D59D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05E3DC432BF44C8900D59D64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05E3DC452BF44C8900D59D64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05E3DC512BF4511D00D59D64 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		05E3DC532BF4517700D59D64 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		05E3DC552BF4518100D59D64 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		05E3DC572BF4518A00D59D64 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
+		05E3DC592BF4519300D59D64 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		05E3DC5B2BF4519900D59D64 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +102,12 @@
 		05E3DC4D2BF44CB400D59D64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				05E3DC512BF4511D00D59D64 /* MainTabBarController.swift */,
+				05E3DC532BF4517700D59D64 /* FeedController.swift */,
+				05E3DC552BF4518100D59D64 /* SearchController.swift */,
+				05E3DC572BF4518A00D59D64 /* ImageSelectorController.swift */,
+				05E3DC592BF4519300D59D64 /* NotificationController.swift */,
+				05E3DC5B2BF4519900D59D64 /* ProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,7 +205,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				05E3DC3C2BF44C8800D59D64 /* ViewController.swift in Sources */,
+				05E3DC582BF4518A00D59D64 /* ImageSelectorController.swift in Sources */,
+				05E3DC5A2BF4519300D59D64 /* NotificationController.swift in Sources */,
+				05E3DC562BF4518100D59D64 /* SearchController.swift in Sources */,
 				05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */,
+				05E3DC5C2BF4519900D59D64 /* ProfileController.swift in Sources */,
+				05E3DC542BF4517700D59D64 /* FeedController.swift in Sources */,
+				05E3DC522BF4511D00D59D64 /* MainTabBarController.swift in Sources */,
 				05E3DC3A2BF44C8800D59D64 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
