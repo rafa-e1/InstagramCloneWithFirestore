@@ -12,6 +12,7 @@ class RegistrationController: UIViewController {
     // MARK: - Properties
     
     private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
     
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -28,7 +29,7 @@ class RegistrationController: UIViewController {
     
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.customButton(title: "Sign Up", action: #selector(didTapSignUp))
+        button.customButton(title: "Sign Up", action: #selector(handleSignUp))
         return button
     }()
     
@@ -55,8 +56,22 @@ class RegistrationController: UIViewController {
     
     // MARK: - Actions
     
-    @objc func didTapSignUp() {
-        navigationController?.popViewController(animated: true)
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullnameTextField.text else { return }
+        guard let username = usernameTextField.text else { return }
+        guard let profileImage = self.profileImage else { return }
+        
+        let credentials = AuthCredentials(
+            email: email,
+            password: password,
+            fullname: fullname,
+            username: username,
+            profileImage: profileImage
+        )
+        
+        AuthService.registerUser(withCredential: credentials)
     }
     
     @objc func handleShowLogin() {
@@ -159,6 +174,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
     ) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImage
         
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
         addPhotoButton.layer.masksToBounds = true
