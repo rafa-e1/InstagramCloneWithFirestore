@@ -7,6 +7,8 @@
 
 import UIKit
 
+import FirebaseAuth
+
 class MainTabBarController: UITabBarController {
     
     // MARK: - Lifecycle
@@ -15,6 +17,20 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         configureViewControllers()
+        checkIfUserIsLoggedIn()
+    }
+    
+    // MARK: - API
+    
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let controller = LoginController()
+                let navigationController = UINavigationController(rootViewController: controller)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true)
+            }
+        }
     }
     
     // MARK: - Helpers
