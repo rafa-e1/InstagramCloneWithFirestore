@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0523660C2BF6DB3F000874AE /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523660B2BF6DB3F000874AE /* LoginController.swift */; };
+		0523660E2BF6DB5B000874AE /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */; };
+		052366112BF6DBAE000874AE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052366102BF6DBAE000874AE /* CustomTextField.swift */; };
+		052366142BF6DC67000874AE /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052366132BF6DC67000874AE /* RegistrationController.swift */; };
 		05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC372BF44C8800D59D64 /* AppDelegate.swift */; };
 		05E3DC3A2BF44C8800D59D64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */; };
 		05E3DC3C2BF44C8800D59D64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC3B2BF44C8800D59D64 /* ViewController.swift */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0523660B2BF6DB3F000874AE /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationViewModel.swift; path = Instagram/ViewModel/AuthenticationViewModel.swift; sourceTree = SOURCE_ROOT; };
+		052366102BF6DBAE000874AE /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		052366132BF6DC67000874AE /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		05E3DC342BF44C8800D59D64 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E3DC372BF44C8800D59D64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +61,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0523660A2BF6DB2B000874AE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0523660B2BF6DB3F000874AE /* LoginController.swift */,
+				052366132BF6DC67000874AE /* RegistrationController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		0523660F2BF6DB94000874AE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		052366122BF6DBCA000874AE /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		05E3DC2B2BF44C8800D59D64 = {
 			isa = PBXGroup;
 			children = (
@@ -74,9 +106,9 @@
 			children = (
 				05E3DC502BF44CBB00D59D64 /* Model */,
 				05E3DC4F2BF44CBA00D59D64 /* View */,
-				05E3DC4E2BF44CB800D59D64 /* ViewModel */,
+				0523660F2BF6DB94000874AE /* ViewModel */,
 				05E3DC4D2BF44CB400D59D64 /* Controller */,
-				05E3DC4C2BF44CB200D59D64 /* API */,
+				052366122BF6DBCA000874AE /* API */,
 				05E3DC4B2BF44CAF00D59D64 /* Utils */,
 				05E3DC372BF44C8800D59D64 /* AppDelegate.swift */,
 				05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */,
@@ -97,16 +129,10 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		05E3DC4C2BF44CB200D59D64 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		05E3DC4D2BF44CB400D59D64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0523660A2BF6DB2B000874AE /* Authentication */,
 				05E3DC512BF4511D00D59D64 /* MainTabBarController.swift */,
 				05E3DC532BF4517700D59D64 /* FeedController.swift */,
 				05E3DC552BF4518100D59D64 /* SearchController.swift */,
@@ -117,16 +143,10 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		05E3DC4E2BF44CB800D59D64 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		05E3DC4F2BF44CBA00D59D64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				052366102BF6DBAE000874AE /* CustomTextField.swift */,
 				05E3DCA82BF46A6400D59D64 /* FeedCell.swift */,
 			);
 			path = View;
@@ -210,7 +230,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052366112BF6DBAE000874AE /* CustomTextField.swift in Sources */,
+				0523660E2BF6DB5B000874AE /* AuthenticationViewModel.swift in Sources */,
 				05E3DC3C2BF44C8800D59D64 /* ViewController.swift in Sources */,
+				0523660C2BF6DB3F000874AE /* LoginController.swift in Sources */,
 				05E3DCA92BF46A6400D59D64 /* FeedCell.swift in Sources */,
 				05E3DC582BF4518A00D59D64 /* ImageSelectorController.swift in Sources */,
 				05E3DC5A2BF4519300D59D64 /* NotificationController.swift in Sources */,
@@ -220,6 +243,7 @@
 				05E3DC542BF4517700D59D64 /* FeedController.swift in Sources */,
 				05E3DC522BF4511D00D59D64 /* MainTabBarController.swift in Sources */,
 				05E3DCAB2BF46B3200D59D64 /* Extensions.swift in Sources */,
+				052366142BF6DC67000874AE /* RegistrationController.swift in Sources */,
 				05E3DC3A2BF44C8800D59D64 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
