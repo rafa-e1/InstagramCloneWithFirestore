@@ -36,11 +36,11 @@ class MainTabBarController: UITabBarController {
     // MARK: - Helpers
     
     func configureViewControllers() {
-        let layout = UICollectionViewFlowLayout()
+        let feedLayout = UICollectionViewFlowLayout()
         let feed = templateNavigationController(
             unselectedImage: #imageLiteral(resourceName: "home_unselected"),
             selectedImage: #imageLiteral(resourceName: "home_selected"),
-            rootViewController: FeedController(collectionViewLayout: layout)
+            rootViewController: FeedController(collectionViewLayout: feedLayout)
         )
         
         let search = templateNavigationController(
@@ -61,10 +61,11 @@ class MainTabBarController: UITabBarController {
             rootViewController: NotificationController()
         )
         
+        let profileLayout = UICollectionViewFlowLayout()
         let profile = templateNavigationController(
-            unselectedImage: #imageLiteral(resourceName: "profile_unselected"),
-            selectedImage: #imageLiteral(resourceName: "profile_selected"),
-            rootViewController: ProfileController()
+            unselectedImage: #imageLiteral(resourceName: "home_unselected"),
+            selectedImage: #imageLiteral(resourceName: "home_selected"),
+            rootViewController: ProfileController(collectionViewLayout: profileLayout)
         )
         
         viewControllers = [feed, search, imageSelector, notification, profile]
