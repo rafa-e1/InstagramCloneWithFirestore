@@ -7,21 +7,28 @@
 
 import UIKit
 
+import SDWebImage
+
 class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Properties
     
+    var viewModel: ProfileHeaderViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "venom-7")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Eddie Brock"
         label.font = .boldSystemFont(ofSize: 14)
         return label
     }()
@@ -162,14 +169,32 @@ class ProfileHeader: UICollectionReusableView {
     // MARK: - Actions
     
     @objc func handleEditProfileFollowTapped() {
-        
+        print("DEBUG: Handle edit profile tapped..")
     }
     
     // MARK: - Helpers
     
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        nameLabel.text = viewModel.fullname
+        profileImageView.sd_setImage(with: viewModel.profileImageURL)
+    }
+    
     func attributedStatusText(value: Int, label: String) -> NSAttributedString {
-        let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
+        let attributedText = NSMutableAttributedString(
+            string: "\(value)\n",
+            attributes: [.font: UIFont.boldSystemFont(ofSize: 14)]
+        )
+        attributedText.append(
+            NSAttributedString(
+                string: label,
+                attributes: [
+                    .font: UIFont.systemFont(ofSize: 14),
+                    .foregroundColor: UIColor.lightGray
+                ]
+            )
+        )
         return attributedText
     }
 }

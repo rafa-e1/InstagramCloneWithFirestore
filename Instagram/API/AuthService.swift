@@ -53,8 +53,7 @@ struct AuthService {
                     "username": credentials.username
                 ]
                 
-                Firestore.firestore()
-                    .collection("users")
+                COLLECTION_USERS
                     .document(uid)
                     .setData(data, completion: completion)
             }
