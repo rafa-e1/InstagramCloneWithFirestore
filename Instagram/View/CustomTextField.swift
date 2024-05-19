@@ -27,6 +27,7 @@ class CustomTextField: UITextField {
             attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)]
         )
         isSecureTextEntry = isPassword
+        autocapitalizationType = .none
         autocorrectionType = .no
         spellCheckingType = .no
         setHeight(50)
