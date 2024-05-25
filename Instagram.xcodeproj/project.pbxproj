@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050F8EDA2C01C168003B7820 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050F8ED92C01C168003B7820 /* UserCell.swift */; };
+		050F8EDC2C01D386003B7820 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050F8EDB2C01D386003B7820 /* UserCellViewModel.swift */; };
 		0523660C2BF6DB3F000874AE /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523660B2BF6DB3F000874AE /* LoginController.swift */; };
 		0523660E2BF6DB5B000874AE /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */; };
 		052366112BF6DBAE000874AE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052366102BF6DBAE000874AE /* CustomTextField.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		050F8ED92C01C168003B7820 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		050F8EDB2C01D386003B7820 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		0523660B2BF6DB3F000874AE /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationViewModel.swift; path = Instagram/ViewModel/AuthenticationViewModel.swift; sourceTree = SOURCE_ROOT; };
 		052366102BF6DBAE000874AE /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */,
 				0523664B2BF83D58000874AE /* ProfileHeaderViewModel.swift */,
+				050F8EDB2C01D386003B7820 /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				0523664C2BF83D58000874AE /* ProfileHeaderViewModel.swift in Sources */,
 				052366482BF838F0000874AE /* Constants.swift in Sources */,
 				05E3DC542BF4517700D59D64 /* FeedController.swift in Sources */,
+				050F8EDC2C01D386003B7820 /* UserCellViewModel.swift in Sources */,
 				05E3DC522BF4511D00D59D64 /* MainTabBarController.swift in Sources */,
 				05E3DCAB2BF46B3200D59D64 /* Extensions.swift in Sources */,
 				052366192BF6E0FF000874AE /* ImageUploader.swift in Sources */,
