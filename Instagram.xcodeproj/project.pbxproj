@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050F8EDA2C01C168003B7820 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050F8ED92C01C168003B7820 /* UserCell.swift */; };
 		0523660C2BF6DB3F000874AE /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523660B2BF6DB3F000874AE /* LoginController.swift */; };
 		0523660E2BF6DB5B000874AE /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */; };
 		052366112BF6DBAE000874AE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052366102BF6DBAE000874AE /* CustomTextField.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		050F8ED92C01C168003B7820 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		0523660B2BF6DB3F000874AE /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationViewModel.swift; path = Instagram/ViewModel/AuthenticationViewModel.swift; sourceTree = SOURCE_ROOT; };
 		052366102BF6DBAE000874AE /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				052366442BF8210A000874AE /* Profile */,
 				052366102BF6DBAE000874AE /* CustomTextField.swift */,
 				05E3DCA82BF46A6400D59D64 /* FeedCell.swift */,
+				050F8ED92C01C168003B7820 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				05E3DCA92BF46A6400D59D64 /* FeedCell.swift in Sources */,
 				05E3DC582BF4518A00D59D64 /* ImageSelectorController.swift in Sources */,
 				05E3DC5A2BF4519300D59D64 /* NotificationController.swift in Sources */,
+				050F8EDA2C01C168003B7820 /* UserCell.swift in Sources */,
 				05E3DC562BF4518100D59D64 /* SearchController.swift in Sources */,
 				05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */,
 				0523664A2BF83A9C000874AE /* User.swift in Sources */,
