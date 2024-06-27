@@ -8,6 +8,7 @@
 import UIKit
 
 import FirebaseAuth
+import YPImagePicker
 
 class MainTabBarController: UITabBarController {
     
@@ -52,6 +53,8 @@ class MainTabBarController: UITabBarController {
     // MARK: - Helpers
     
     func configureViewControllers(withUser user: User) {
+        delegate = self
+        
         let feedLayout = UICollectionViewFlowLayout()
         let feed = templateNavigationController(
             unselectedImage: #imageLiteral(resourceName: "home_unselected"),
@@ -100,6 +103,14 @@ class MainTabBarController: UITabBarController {
         return navigationController
     }
     
+    func didFinishPickingMedia(_ picker: YPImagePicker) {
+        picker.didFinishPicking { items, _ in
+            picker.dismiss(animated: true) {
+                guard let selectedImage = items.singlePhoto?.image else { return }
+                print("DEBUG: Selected image is \(selectedImage)")
+            }
+        }
+    }
 }
 
 // MARK: - AuthenticationDelegate
@@ -108,5 +119,34 @@ extension MainTabBarController: AuthenticationDelegate {
     func authenticationDidComplete() {
         fetchUser()
         dismiss(animated: true)
+    }
+}
+
+// MARK: - UITabBarControllerDelegate
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        shouldSelect viewController: UIViewController
+    ) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        if index == 2 {
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photo
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen = .library
+            config.screens = [.library]
+            config.hidesStatusBar = false
+            config.hidesBottomBar = false
+            config.library.maxNumberOfItems = 1
+            
+            let picker = YPImagePicker(configuration: config)
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true)
+            
+            didFinishPickingMedia(picker)
+        }
+        
+        return true
     }
 }
