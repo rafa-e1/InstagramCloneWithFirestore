@@ -22,6 +22,8 @@
 		052366482BF838F0000874AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052366472BF838F0000874AE /* Constants.swift */; };
 		0523664A2BF83A9C000874AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052366492BF83A9C000874AE /* User.swift */; };
 		0523664C2BF83D58000874AE /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523664B2BF83D58000874AE /* ProfileHeaderViewModel.swift */; };
+		05874EF52C399E7B003642AF /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EF42C399E7B003642AF /* UploadPostController.swift */; };
+		05874EF72C39A3AB003642AF /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EF62C39A3AB003642AF /* InputTextView.swift */; };
 		05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC372BF44C8800D59D64 /* AppDelegate.swift */; };
 		05E3DC3A2BF44C8800D59D64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */; };
 		05E3DC3C2BF44C8800D59D64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC3B2BF44C8800D59D64 /* ViewController.swift */; };
@@ -55,6 +57,8 @@
 		052366472BF838F0000874AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		052366492BF83A9C000874AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0523664B2BF83D58000874AE /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		05874EF42C399E7B003642AF /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		05874EF62C39A3AB003642AF /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		05E3DC342BF44C8800D59D64 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E3DC372BF44C8800D59D64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				05E3DCAA2BF46B3200D59D64 /* Extensions.swift */,
 				052366472BF838F0000874AE /* Constants.swift */,
+				05874EF62C39A3AB003642AF /* InputTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				05E3DC572BF4518A00D59D64 /* ImageSelectorController.swift */,
 				05E3DC592BF4519300D59D64 /* NotificationController.swift */,
 				05E3DC5B2BF4519900D59D64 /* ProfileController.swift */,
+				05874EF42C399E7B003642AF /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			files = (
 				052366112BF6DBAE000874AE /* CustomTextField.swift in Sources */,
 				052366432BF82103000874AE /* ProfileHeader.swift in Sources */,
+				05874EF52C399E7B003642AF /* UploadPostController.swift in Sources */,
 				0523660E2BF6DB5B000874AE /* AuthenticationViewModel.swift in Sources */,
 				05E3DC3C2BF44C8800D59D64 /* ViewController.swift in Sources */,
 				0523660C2BF6DB3F000874AE /* LoginController.swift in Sources */,
@@ -354,6 +361,7 @@
 				0523664A2BF83A9C000874AE /* User.swift in Sources */,
 				05E3DC5C2BF4519900D59D64 /* ProfileController.swift in Sources */,
 				0523664C2BF83D58000874AE /* ProfileHeaderViewModel.swift in Sources */,
+				05874EF72C39A3AB003642AF /* InputTextView.swift in Sources */,
 				052366482BF838F0000874AE /* Constants.swift in Sources */,
 				05E3DC542BF4517700D59D64 /* FeedController.swift in Sources */,
 				050F8EDC2C01D386003B7820 /* UserCellViewModel.swift in Sources */,
