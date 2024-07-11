@@ -15,10 +15,13 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Lifecycle
     
+    private var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        fetchPosts()
     }
     
     // MARK: - Actions
@@ -33,6 +36,15 @@ class FeedController: UICollectionViewController {
             present(navigationController, animated: true)
         } catch {
             print("DEBUG: Failed to sign out")
+        }
+    }
+    
+    // MARK: - API
+    
+    func fetchPosts() {
+        PostService.fetchPosts { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
         }
     }
     
@@ -65,7 +77,7 @@ extension FeedController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 5
+        return posts.count
     }
     
     override func collectionView(
