@@ -40,6 +40,7 @@ class FeedController: UICollectionViewController {
             navigationController.modalPresentationStyle = .fullScreen
             present(navigationController, animated: true)
         } catch {
+            // TODO: Alert View로 대체
             print("DEBUG: Failed to sign out")
         }
     }
@@ -97,10 +98,10 @@ extension FeedController {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
+        guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: reuseIdentifier,
             for: indexPath
-        ) as! FeedCell
+        ) as? FeedCell else { return UICollectionViewCell() }
         
         if let post = post {
             cell.viewModel = PostViewModel(post: post)
@@ -115,7 +116,11 @@ extension FeedController {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension FeedController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let width = view.frame.width
         var height = width + 8 + 40 + 8
         height += 50

@@ -74,10 +74,10 @@ extension SearchController {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
+        guard let cell = tableView.dequeueReusableCell(
             withIdentifier: reuseIdentifier,
             for: indexPath
-        ) as! UserCell
+        ) as? UserCell else { return UITableViewCell() }
         
         let user = inSearchMode ? filteredUsers[indexPath.row] : users[indexPath.row]
         cell.viewModel = UserCellViewModel(user: user)

@@ -103,11 +103,11 @@ extension ProfileController {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(
+        guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: headerIdentifier,
             for: indexPath
-        ) as! ProfileHeader
+        ) as? ProfileHeader else { return UICollectionReusableView() }
         
         header.delegate = self
         header.viewModel = ProfileHeaderViewModel(user: user)
