@@ -37,7 +37,7 @@ class FeedCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
-        imageView.image = #imageLiteral(resourceName: "venom-7")
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -45,7 +45,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "like_unselected"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
         return button
     }()
     
@@ -53,7 +53,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "comment"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
         return button
     }()
     
@@ -61,7 +61,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "send"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
         return button
     }()
     
@@ -132,7 +132,7 @@ class FeedCell: UICollectionViewCell {
     // MARK: - Actions
     
     @objc private func didTapUsername() {
-        
+        print("DEBUG: Username did tap..")
     }
     
     // MARK: - Helpers
