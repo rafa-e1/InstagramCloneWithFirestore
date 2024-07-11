@@ -15,13 +15,13 @@ class FeedCell: UICollectionViewCell {
         didSet { configure() }
     }
     
-    private let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.isUserInteractionEnabled = true
-        imageView.backgroundColor = .lightGray
-        return imageView
+    private lazy var profileImageButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.clipsToBounds = true
+        button.backgroundColor = .lightGray
+        button.imageView?.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+        return button
     }()
     
     private lazy var usernameButton: UIButton = {
@@ -92,21 +92,21 @@ class FeedCell: UICollectionViewCell {
         
         backgroundColor = .white
         
-        addSubview(profileImageView)
-        profileImageView.anchor(top: topAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
-        profileImageView.setDimensions(height: 40, width: 40)
-        profileImageView.layer.cornerRadius = 40 / 2
+        addSubview(profileImageButton)
+        profileImageButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
+        profileImageButton.setDimensions(height: 40, width: 40)
+        profileImageButton.layer.cornerRadius = 40 / 2
         
         addSubview(usernameButton)
         usernameButton.centerY(
-            inView: profileImageView,
-            leftAnchor: profileImageView.rightAnchor,
+            inView: profileImageButton,
+            leftAnchor: profileImageButton.rightAnchor,
             paddingLeft: 8
         )
         
         addSubview(postImageView)
         postImageView.anchor(
-            top: profileImageView.bottomAnchor,
+            top: profileImageButton.bottomAnchor,
             left: leftAnchor,
             right: rightAnchor,
             paddingTop: 8
@@ -140,7 +140,7 @@ class FeedCell: UICollectionViewCell {
     func configure() {
         guard let viewModel = viewModel else { return }
         
-        profileImageView.sd_setImage(with: viewModel.userProfileImageURL)
+        profileImageButton.sd_setBackgroundImage(with: viewModel.userProfileImageURL, for: .normal)
         usernameButton.setTitle(viewModel.username, for: .normal)
         
         postImageView.sd_setImage(with: viewModel.imageURL)
@@ -156,5 +156,4 @@ class FeedCell: UICollectionViewCell {
         addSubview(stackView)
         stackView.anchor(top: postImageView.bottomAnchor, width: 120, height: 50)
     }
-    
 }
