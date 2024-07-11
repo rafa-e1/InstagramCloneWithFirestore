@@ -35,7 +35,7 @@ struct ProfileHeaderViewModel {
     }
     
     var numberOfPosts: NSAttributedString {
-        return attributedStatusText(value: 5, label: "posts")
+        return attributedStatusText(value: user.stats.posts, label: "posts")
     }
     
     var numberOfFollowers: NSAttributedString {

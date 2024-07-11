@@ -8,19 +8,23 @@
 import FirebaseFirestoreInternal
 
 struct Post {
-    var caption: String
-    var likes: Int
-    let imageURL: String
-    let ownerUID: String
-    let timestamp: Timestamp
     let postID: String
+    let ownerUID: String
+    let ownerImageURL: String
+    let ownerUsername: String
+    let imageURL: String
+    var likes: Int
+    var caption: String
+    let timestamp: Timestamp
     
     init(postID: String, dictionary: [String: Any]) {
         self.postID = postID
-        self.caption = dictionary["caption"] as? String ?? ""
-        self.likes = dictionary["likes"] as? Int ?? 0
-        self.imageURL = dictionary["imageURL"] as? String ?? ""
-        self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
         self.ownerUID = dictionary["ownerUID"] as? String ?? ""
+        self.ownerImageURL = dictionary["ownerImageURL"] as? String ?? ""
+        self.ownerUsername = dictionary["ownerUsername"] as? String ?? ""
+        self.imageURL = dictionary["imageURL"] as? String ?? ""
+        self.likes = dictionary["likes"] as? Int ?? 0
+        self.caption = dictionary["caption"] as? String ?? ""
+        self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
     }
 }

@@ -26,6 +26,7 @@
 		05874EF72C39A3AB003642AF /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EF62C39A3AB003642AF /* InputTextView.swift */; };
 		05874EF92C3BBB72003642AF /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EF82C3BBB72003642AF /* PostService.swift */; };
 		05874EFB2C3FAC43003642AF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EFA2C3FAC43003642AF /* Post.swift */; };
+		05874EFD2C3FB0B1003642AF /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EFC2C3FB0B1003642AF /* PostViewModel.swift */; };
 		05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC372BF44C8800D59D64 /* AppDelegate.swift */; };
 		05E3DC3A2BF44C8800D59D64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */; };
 		05E3DC3C2BF44C8800D59D64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC3B2BF44C8800D59D64 /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		05874EF62C39A3AB003642AF /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		05874EF82C3BBB72003642AF /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		05874EFA2C3FAC43003642AF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		05874EFC2C3FB0B1003642AF /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		05E3DC342BF44C8800D59D64 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E3DC372BF44C8800D59D64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				0523660D2BF6DB5B000874AE /* AuthenticationViewModel.swift */,
 				0523664B2BF83D58000874AE /* ProfileHeaderViewModel.swift */,
 				050F8EDB2C01D386003B7820 /* UserCellViewModel.swift */,
+				05874EFC2C3FB0B1003642AF /* PostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05874EFD2C3FB0B1003642AF /* PostViewModel.swift in Sources */,
 				052366112BF6DBAE000874AE /* CustomTextField.swift in Sources */,
 				052366432BF82103000874AE /* ProfileHeader.swift in Sources */,
 				05874EF52C399E7B003642AF /* UploadPostController.swift in Sources */,

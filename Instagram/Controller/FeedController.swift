@@ -26,6 +26,11 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Actions
     
+    @objc func handleRefresh() {
+        posts.removeAll()
+        fetchPosts()
+    }
+    
     @objc func handleLogout() {
         do {
             try Auth.auth().signOut()
@@ -45,6 +50,7 @@ class FeedController: UICollectionViewController {
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
     
@@ -66,8 +72,11 @@ class FeedController: UICollectionViewController {
         )
         
         navigationItem.title = "Feed"
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refresher
     }
-    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -88,6 +97,7 @@ extension FeedController {
             withReuseIdentifier: reuseIdentifier,
             for: indexPath
         ) as! FeedCell
+        cell.viewModel = PostViewModel(post: posts[indexPath.row])
         return cell
     }
 }

@@ -111,6 +111,7 @@ class MainTabBarController: UITabBarController {
                 let controller = UploadPostController()
                 controller.selectedImage = selectedImage
                 controller.delegate = self
+                controller.currentUser = self.user
                 
                 let navigationController = UINavigationController(rootViewController: controller)
                 navigationController.modalPresentationStyle = .fullScreen
@@ -165,5 +166,9 @@ extension MainTabBarController: UploadPostControllerDelegate {
     func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
         selectedIndex = 0
         controller.dismiss(animated: true)
+        
+        guard let feedNav = viewControllers?.first as? UINavigationController else { return }
+        guard let feed = feedNav.viewControllers.first as? FeedController else { return }
+        feed.handleRefresh()
     }
 }
