@@ -8,7 +8,7 @@
 import Foundation
 
 struct PostViewModel {
-    private let post: Post
+    let post: Post
     
     var userProfileImageURL: URL? { return URL(string: post.ownerImageURL) }
     var username: String { return post.ownerUsername }
