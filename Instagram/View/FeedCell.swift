@@ -48,10 +48,8 @@ class FeedCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "like_unselected"), for: .normal)
-        button.tintColor = .black
         button.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         return button
     }()
@@ -74,12 +72,14 @@ class FeedCell: UICollectionViewCell {
     
     private let likesLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .boldSystemFont(ofSize: 13)
         return label
     }()
     
     private let captionLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .systemFont(ofSize: 14)
         return label
     }()
@@ -123,13 +123,28 @@ class FeedCell: UICollectionViewCell {
         configureActionButtons()
         
         addSubview(likesLabel)
-        likesLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, paddingTop: -4, paddingLeft: 8)
+        likesLabel.anchor(
+            top: likeButton.bottomAnchor,
+            left: leftAnchor,
+            paddingTop: -4,
+            paddingLeft: 8
+        )
         
         addSubview(captionLabel)
-        captionLabel.anchor(top: likesLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
+        captionLabel.anchor(
+            top: likesLabel.bottomAnchor,
+            left: leftAnchor,
+            paddingTop: 8,
+            paddingLeft: 8
+        )
         
         addSubview(postTimeLabel)
-        postTimeLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
+        postTimeLabel.anchor(
+            top: captionLabel.bottomAnchor,
+            left: leftAnchor,
+            paddingTop: 8,
+            paddingLeft: 8
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -162,6 +177,8 @@ class FeedCell: UICollectionViewCell {
         
         postImageView.sd_setImage(with: viewModel.imageURL)
         likesLabel.text = viewModel.likesLabelText
+        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
+        likeButton.tintColor = viewModel.likeButtonTintColor
         captionLabel.text = viewModel.caption
     }
     
