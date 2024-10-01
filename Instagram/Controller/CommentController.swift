@@ -131,6 +131,14 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
         let height = viewModel.size(forWidth: view.frame.width).height + 32
         return CGSize(width: view.frame.width, height: height)
     }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        return 0
+    }
 }
 
 // MARK: - CommentInputAccessoryViewDelegate
