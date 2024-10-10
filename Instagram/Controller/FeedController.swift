@@ -162,6 +162,12 @@ extension FeedController: FeedCellDelegate {
         } else {
             PostService.likePost(post: post) { _ in
                 cell.viewModel?.post.likes = post.likes + 1
+
+                NotificationService.uploadNotification(
+                    toUID: post.ownerUID,
+                    type: .like,
+                    post: post
+                )
             }
         }
     }

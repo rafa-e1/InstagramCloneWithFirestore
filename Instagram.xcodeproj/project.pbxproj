@@ -35,6 +35,7 @@
 		05874F0D2C43A863003642AF /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874F0C2C43A863003642AF /* CommentViewModel.swift */; };
 		05A130522CABF04F007BF4FB /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130512CABF04F007BF4FB /* NotificationCell.swift */; };
 		05E2A6D32CB676DE00B5D243 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A6D22CB676DE00B5D243 /* Notification.swift */; };
+		05E2A7892CB81C6300B5D243 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A7882CB81C6300B5D243 /* NotificationService.swift */; };
 		05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC372BF44C8800D59D64 /* AppDelegate.swift */; };
 		05E3DC3A2BF44C8800D59D64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */; };
 		05E3DC3C2BF44C8800D59D64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC3B2BF44C8800D59D64 /* ViewController.swift */; };
@@ -81,6 +82,7 @@
 		05874F0C2C43A863003642AF /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		05A130512CABF04F007BF4FB /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		05E2A6D22CB676DE00B5D243 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		05E2A7882CB81C6300B5D243 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		05E3DC342BF44C8800D59D64 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E3DC372BF44C8800D59D64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05E3DC392BF44C8800D59D64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				052366452BF838B4000874AE /* UserService.swift */,
 				05874EF82C3BBB72003642AF /* PostService.swift */,
 				05874F082C439F2C003642AF /* CommentService.swift */,
+				05E2A7882CB81C6300B5D243 /* NotificationService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				05E3DC522BF4511D00D59D64 /* MainTabBarController.swift in Sources */,
 				05E3DCAB2BF46B3200D59D64 /* Extensions.swift in Sources */,
 				052366192BF6E0FF000874AE /* ImageUploader.swift in Sources */,
+				05E2A7892CB81C6300B5D243 /* NotificationService.swift in Sources */,
 				05874EFB2C3FAC43003642AF /* Post.swift in Sources */,
 				0523661B2BF6E105000874AE /* AuthService.swift in Sources */,
 				05874F072C412F38003642AF /* CommentInputAccessoryView.swift in Sources */,
