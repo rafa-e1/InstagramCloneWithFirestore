@@ -14,10 +14,16 @@ struct NotificationService {
         guard let currentUID = Auth.auth().currentUser?.uid else { return }
         guard uid != currentUID else { return }
 
+        let docRef = COLLECTION_NOTIFICATIONS
+            .document(uid)
+            .collection("user-notifications")
+            .document()
+
         var data: [String: Any] = [
             "timestamp": Timestamp(date: Date()),
             "uid": currentUID,
-            "type": type.rawValue
+            "type": type.rawValue,
+            "id": docRef.documentID
         ]
 
         if let post = post {
@@ -25,10 +31,7 @@ struct NotificationService {
             data["postImageURL"] = post.imageURL
         }
 
-        COLLECTION_NOTIFICATIONS
-            .document(uid)
-            .collection("user-notifications")
-            .addDocument(data: data)
+        docRef.setData(data)
     }
 
     static func fetchNotifications() {
