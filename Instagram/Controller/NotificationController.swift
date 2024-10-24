@@ -60,7 +60,10 @@ extension NotificationController {
             withIdentifier: reuseIdentifier,
             for: indexPath
         ) as! NotificationCell
+
         cell.selectionStyle = .none
+        cell.viewModel = NotificationViewModel(notification: notifications[indexPath.row])
+
         return cell
     }
 }

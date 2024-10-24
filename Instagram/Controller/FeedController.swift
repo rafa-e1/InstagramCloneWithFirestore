@@ -153,6 +153,9 @@ extension FeedController: FeedCellDelegate {
     }
 
     func cell(_ cell: FeedCell, didLike post: Post) {
+        guard let tab = tabBarController as? MainTabBarController else { return }
+        guard let user = tab.user else { return }
+        
         cell.viewModel?.post.didLike.toggle()
 
         if post.didLike {
@@ -165,6 +168,7 @@ extension FeedController: FeedCellDelegate {
 
                 NotificationService.uploadNotification(
                     toUID: post.ownerUID,
+                    fromUser: user,
                     type: .like,
                     post: post
                 )

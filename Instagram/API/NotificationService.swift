@@ -10,7 +10,12 @@ import FirebaseFirestoreInternal
 
 struct NotificationService {
 
-    static func uploadNotification(toUID uid: String, type: NotificationType, post: Post? = nil) {
+    static func uploadNotification(
+        toUID uid: String,
+        fromUser: User,
+        type: NotificationType,
+        post: Post? = nil
+    ) {
         guard let currentUID = Auth.auth().currentUser?.uid else { return }
         guard uid != currentUID else { return }
 
@@ -21,9 +26,11 @@ struct NotificationService {
 
         var data: [String: Any] = [
             "timestamp": Timestamp(date: Date()),
-            "uid": currentUID,
+            "uid": fromUser.uid,
             "type": type.rawValue,
-            "id": docRef.documentID
+            "id": docRef.documentID,
+            "userProfileImageURL": fromUser.profileImageURL,
+            "username": fromUser.username
         ]
 
         if let post = post {
