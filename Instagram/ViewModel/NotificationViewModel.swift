@@ -43,4 +43,5 @@ struct NotificationViewModel {
     }
 
     var postImageURL: URL? { return URL(string: notification.postImageURL ?? "") }
+    var shouldHidePostImage: Bool { return notification.type == .follow }
 }

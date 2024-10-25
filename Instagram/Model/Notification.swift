@@ -35,7 +35,7 @@ struct Notification {
         uid = dictionary["uid"] as? String ?? ""
         postID = dictionary["postID"] as? String ?? ""
         postImageURL = dictionary["postImageURL"] as? String ?? ""
-        type = NotificationType(rawValue: dictionary["timestamp"] as? Int ?? 0) ?? .like
+        type = NotificationType(rawValue: dictionary["type"] as? Int ?? 0) ?? .like
         userProfileImageURL = dictionary["userProfileImageURL"] as? String ?? ""
         username = dictionary["username"] as? String ?? ""
     }
