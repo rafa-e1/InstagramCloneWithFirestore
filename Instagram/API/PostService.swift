@@ -40,7 +40,7 @@ struct PostService {
             .order(by: "timestamp", descending: true)
             .getDocuments
         { snapshot, error in
-            guard let documents =  snapshot?.documents else { return }
+            guard let documents = snapshot?.documents else { return }
             
             let posts = documents.map({ Post(postID: $0.documentID, dictionary: $0.data()) })
             completion(posts)
@@ -60,6 +60,16 @@ struct PostService {
             }
             
             completion(posts)
+        }
+    }
+
+    static func fetchPost(withPostID postID: String, completion: @escaping(Post) -> Void) {
+        COLLECTION_POSTS.document(postID).getDocument { snapshot, _ in
+            guard let snapshot = snapshot else { return }
+            guard let data = snapshot.data() else { return }
+
+            let post = Post(postID: snapshot.documentID, dictionary: data)
+            completion(post)
         }
     }
 
