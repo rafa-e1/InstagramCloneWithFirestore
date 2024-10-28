@@ -190,6 +190,8 @@ extension ProfileController: ProfileHeaderDelegate {
                     fromUser: currentUser,
                     type: .follow
                 )
+
+                PostService.updateUserFeedAfterFollowing(user: user)
             }
         }
     }
