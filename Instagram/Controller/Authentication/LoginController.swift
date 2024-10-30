@@ -40,8 +40,8 @@ class LoginController: UIViewController {
             secondPart: "Get help signing in."
         )
         
-        button.addTarget(self, action: #selector(didTapForgotPassword), for: .touchUpInside)
-        
+        button.addTarget(self, action: #selector(handleShowResetPassword), for: .touchUpInside)
+
         return button
     }()
     
@@ -82,8 +82,9 @@ class LoginController: UIViewController {
         }
     }
     
-    @objc func didTapForgotPassword() {
-        print("Forgot Password Button Did Tap")
+    @objc func handleShowResetPassword() {
+        let controller = ResetPasswordController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func handleShowSignUp() {
