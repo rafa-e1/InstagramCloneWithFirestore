@@ -14,7 +14,15 @@ class RegistrationController: UIViewController {
     private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
     weak var delegate: AuthenticationDelegate?
-    
+
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
+        return button
+    }()
+
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
@@ -56,7 +64,11 @@ class RegistrationController: UIViewController {
     }
     
     // MARK: - Actions
-    
+
+    @objc private func handleDismissal() {
+        navigationController?.popViewController(animated: true)
+    }
+
     @objc func handleSignUp() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -111,7 +123,10 @@ class RegistrationController: UIViewController {
     
     func configureUI() {
         configureGradientLayer()
-        
+
+        view.addSubview(backButton)
+        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
+
         view.addSubview(addPhotoButton)
         addPhotoButton.centerX(inView: view)
         addPhotoButton.setDimensions(height: 140, width: 140)
