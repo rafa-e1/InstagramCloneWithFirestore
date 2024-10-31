@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol ResetPasswordControllerDelegate: AnyObject {
+    func controllerDidSendResetPasswordLink(_ controller: ResetPasswordController)
+}
+
 class ResetPasswordController: UIViewController {
 
     // MARK: - Properties
+
+    private var viewModel = ResetPasswordViewModel()
+    weak var delegate: ResetPasswordControllerDelegate?
 
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -48,13 +55,35 @@ class ResetPasswordController: UIViewController {
     }
 
     @objc private func handleResetPassword() {
+        guard let email = emailTextField.text else { return }
 
+        showLoader(true)
+
+        AuthService.resetPassword(withEmail: email) { error in
+            if let error = error {
+                self.showMessage(withTitle: "Error", message: error.localizedDescription)
+                self.showLoader(false)
+                return
+            }
+
+            self.delegate?.controllerDidSendResetPasswordLink(self)
+        }
+    }
+
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        }
+
+        updateForm()
     }
 
     // MARK: - Helpers
 
     func configureUI() {
         configureGradientLayer()
+
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
 
         view.addSubview(backButton)
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
@@ -82,6 +111,26 @@ class ResetPasswordController: UIViewController {
             paddingTop: 32,
             paddingLeft: 32,
             paddingRight: 32
+        )
+    }
+}
+
+// MARK: - FormViewModel
+
+extension ResetPasswordController: FormViewModel {
+    func updateForm() {
+        UIView.animate(withDuration: 0.5) {
+            self.resetPasswordButton.backgroundColor = self.viewModel.buttonBackgroundColor
+            self.resetPasswordButton.isEnabled = self.viewModel.formIsValid
+        }
+
+        UIView.transition(
+            with: resetPasswordButton,
+            duration: 0.5,
+            options: .transitionCrossDissolve,
+            animations: {
+                self.resetPasswordButton.setTitleColor(self.viewModel.buttonTitleColor, for: .normal)
+            }
         )
     }
 }
