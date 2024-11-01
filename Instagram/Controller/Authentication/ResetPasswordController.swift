@@ -40,6 +40,8 @@ class ResetPasswordController: UIViewController {
 
     private let emailTextField = CustomTextField(placeholder: "Email", isPassword: false)
 
+    var email: String?
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -83,6 +85,9 @@ class ResetPasswordController: UIViewController {
     func configureUI() {
         configureGradientLayer()
 
+        emailTextField.text = email
+        viewModel.email = email
+        updateForm()
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
 
         view.addSubview(backButton)
