@@ -20,13 +20,17 @@ class FeedController: UICollectionViewController {
     }
 
     var post: Post? {
-        didSet { checkIfUserLikedPosts() }
+        didSet { collectionView.reloadData() }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         fetchPosts()
+
+        if post != nil {
+            checkIfUserLikedPosts()
+        }
     }
     
     // MARK: - Actions
@@ -66,7 +70,6 @@ class FeedController: UICollectionViewController {
         if let post = post {
             PostService.checkIfUserLikedPost(post: post) { didLike in
                 self.post?.didLike = didLike
-                self.collectionView.reloadData()
             }
         } else {
             self.posts.forEach { post in
