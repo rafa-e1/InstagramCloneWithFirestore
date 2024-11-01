@@ -82,7 +82,12 @@ class SearchController: UIViewController {
         tableView.fillSuperview()
 
         view.addSubview(collectionView)
-        collectionView.fillSuperview()
+        collectionView.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            left: view.leftAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            right: view.rightAnchor
+        )
     }
 
     func configureSearchController() {
