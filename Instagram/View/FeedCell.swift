@@ -8,9 +8,10 @@
 import UIKit
 
 protocol FeedCellDelegate: AnyObject {
-    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
-    func cell(_ cell: FeedCell, didLike post: Post)
     func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String)
+    func cell(_ cell: FeedCell, didLike post: Post)
+    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
+    func cell(_ cell: FeedCell, wantsToShare post: Post)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -41,7 +42,7 @@ class FeedCell: UICollectionViewCell {
         return button
     }()
     
-    private let postImageView: UIImageView = {
+    let postImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -68,7 +69,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "send"), for: .normal)
         button.tintColor = .black
-//        button.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
         return button
     }()
     
@@ -158,15 +159,20 @@ class FeedCell: UICollectionViewCell {
         guard let viewModel = viewModel else { return }
         delegate?.cell(self, wantsToShowProfileFor: viewModel.post.ownerUID)
     }
-    
+
+    @objc func didTapLike() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, didLike: viewModel.post)
+    }
+
     @objc private func didTapComments() {
         guard let viewModel = viewModel else { return }
         delegate?.cell(self, wantsToShowCommentsFor: viewModel.post)
     }
 
-    @objc func didTapLike() {
+    @objc func didTapShare() {
         guard let viewModel = viewModel else { return }
-        delegate?.cell(self, didLike: viewModel.post)
+        delegate?.cell(self, wantsToShare: viewModel.post)
     }
 
     // MARK: - Helpers

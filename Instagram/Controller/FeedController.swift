@@ -159,15 +159,18 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 // MARK: - FeedCellDelegate
 
 extension FeedController: FeedCellDelegate {
-    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
-        let controller = CommentController(post: post)
-        navigationController?.pushViewController(controller, animated: true)
+
+    func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String) {
+        UserService.fetchUser(withUID: uid) { user in
+            let controller = ProfileController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 
     func cell(_ cell: FeedCell, didLike post: Post) {
         guard let tab = tabBarController as? MainTabBarController else { return }
         guard let user = tab.user else { return }
-        
+
         cell.viewModel?.post.didLike.toggle()
 
         if post.didLike {
@@ -188,10 +191,22 @@ extension FeedController: FeedCellDelegate {
         }
     }
 
-    func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String) {
-        UserService.fetchUser(withUID: uid) { user in
-            let controller = ProfileController(user: user)
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
+    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
+        let controller = CommentController(post: post)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
+    func cell(_ cell: FeedCell, wantsToShare post: Post) {
+        guard let image = cell.postImageView.image else { return }
+
+        let caption = cell.viewModel?.caption ?? ""
+        let activityController = UIActivityViewController(
+            activityItems: [caption, image],
+            applicationActivities: nil
+        )
+
+        activityController.popoverPresentationController?.sourceView = cell
+
+        present(activityController, animated: true)
     }
 }
