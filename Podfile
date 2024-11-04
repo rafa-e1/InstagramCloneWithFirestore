@@ -13,6 +13,8 @@ target 'Instagram' do
   pod 'SDWebImage', '~> 5.0'
   pod 'ActiveLabel'
   pod 'YPImagePicker'
+  pod 'SnapKit', '~> 5.7.0'
+  pod 'Then'
 
 end
 

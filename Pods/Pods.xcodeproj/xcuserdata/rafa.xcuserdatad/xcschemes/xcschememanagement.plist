@@ -221,19 +221,40 @@
 			<key>orderHint</key>
 			<integer>40</integer>
 		</dict>
-		<key>SteviaLayout.xcscheme</key>
+		<key>SnapKit-SnapKit_Privacy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>43</integer>
+		</dict>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>42</integer>
 		</dict>
+		<key>SteviaLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>44</integer>
+		</dict>
+		<key>Then.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>45</integer>
+		</dict>
 		<key>YPImagePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>46</integer>
 		</dict>
 		<key>abseil-xcprivacy.xcscheme</key>
 		<dict>

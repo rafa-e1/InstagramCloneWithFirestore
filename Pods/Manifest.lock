@@ -1112,7 +1112,9 @@ PODS:
   - SDWebImage (5.19.2):
     - SDWebImage/Core (= 5.19.2)
   - SDWebImage/Core (5.19.2)
+  - SnapKit (5.7.1)
   - SteviaLayout (5.1.2)
+  - Then (3.0.0)
   - YPImagePicker (5.2.2):
     - PryntTrimmerView (= 4.0.2)
     - SteviaLayout (= 5.1.2)
@@ -1124,6 +1126,8 @@ DEPENDENCIES:
   - FirebaseStorage
   - JGProgressHUD
   - SDWebImage (~> 5.0)
+  - SnapKit (~> 5.7.0)
+  - Then
   - YPImagePicker
 
 SPEC REPOS:
@@ -1152,7 +1156,9 @@ SPEC REPOS:
     - PryntTrimmerView
     - RecaptchaInterop
     - SDWebImage
+    - SnapKit
     - SteviaLayout
+    - Then
     - YPImagePicker
 
 SPEC CHECKSUMS:
@@ -1180,9 +1186,11 @@ SPEC CHECKSUMS:
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SteviaLayout: 05424e528d643657d39ce72c786e4adf13cfc5f2
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   YPImagePicker: afc81b3cffab05a6e7261c5daf80dc31b4e917b4
 
-PODFILE CHECKSUM: ee84275866057bcaaf8d6a61889f7132be985a5c
+PODFILE CHECKSUM: f18af4373c027bf17812dcefe7fe39f60ebe648e
 
 COCOAPODS: 1.15.2
