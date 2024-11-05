@@ -126,6 +126,7 @@ class MainTabBarController: UITabBarController {
 // MARK: - AuthenticationDelegate
 
 extension MainTabBarController: AuthenticationDelegate {
+
     func authenticationDidComplete() {
         fetchUser()
         dismiss(animated: true)
@@ -135,6 +136,7 @@ extension MainTabBarController: AuthenticationDelegate {
 // MARK: - UITabBarControllerDelegate
 
 extension MainTabBarController: UITabBarControllerDelegate {
+
     func tabBarController(
         _ tabBarController: UITabBarController,
         shouldSelect viewController: UIViewController
@@ -164,6 +166,7 @@ extension MainTabBarController: UITabBarControllerDelegate {
 // MARK: - UploadPostControllerDelegate
 
 extension MainTabBarController: UploadPostControllerDelegate {
+    
     func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
         selectedIndex = 0
         controller.dismiss(animated: true)

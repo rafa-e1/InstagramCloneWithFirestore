@@ -10,6 +10,7 @@ import UIKit
 import JGProgressHUD
 
 extension UIViewController {
+
     static let hud = JGProgressHUD(style: .dark)
     
     func configureGradientLayer() {
@@ -72,6 +73,7 @@ extension UIButton {
 }
 
 extension UIView {
+
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,

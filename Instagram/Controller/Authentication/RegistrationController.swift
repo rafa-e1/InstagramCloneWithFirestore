@@ -166,12 +166,12 @@ class RegistrationController: UIViewController {
         fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
-    
 }
 
 // MARK: - FormViewModel
 
 extension RegistrationController: FormViewModel {
+
     func updateForm() {
         UIView.animate(withDuration: 0.5) {
             self.signUpButton.backgroundColor = self.viewModel.buttonBackgroundColor
@@ -192,6 +192,7 @@ extension RegistrationController: FormViewModel {
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]

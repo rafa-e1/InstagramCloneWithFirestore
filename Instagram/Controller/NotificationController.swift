@@ -73,6 +73,7 @@ class NotificationController: UITableViewController {
 }
 
 extension NotificationController {
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notifications.count
     }
@@ -95,6 +96,7 @@ extension NotificationController {
 }
 
 extension NotificationController {
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showLoader(true)
 
@@ -107,6 +109,7 @@ extension NotificationController {
 }
 
 extension NotificationController: NotificationCellDelegate {
+    
     func cell(_ cell: NotificationCell, wantsToFollow uid: String) {
         showLoader(true)
 

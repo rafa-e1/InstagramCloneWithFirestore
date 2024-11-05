@@ -79,6 +79,7 @@ class ProfileController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 
 extension ProfileController {
+
     override func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -119,6 +120,7 @@ extension ProfileController {
 // MARK: - UICollectionViewDelegate
 
 extension ProfileController {
+
     override func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
@@ -132,6 +134,7 @@ extension ProfileController {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension ProfileController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -169,6 +172,7 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
 // MARK: - ProfileHeaderDelegate
 
 extension ProfileController: ProfileHeaderDelegate {
+    
     func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
         guard let tab = tabBarController as? MainTabBarController else { return }
         guard let currentUser = tab.user else { return }

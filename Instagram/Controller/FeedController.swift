@@ -112,6 +112,7 @@ class FeedController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 
 extension FeedController {
+
     override func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -142,6 +143,7 @@ extension FeedController {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension FeedController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,

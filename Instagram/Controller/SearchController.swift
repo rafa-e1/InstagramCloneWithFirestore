@@ -107,6 +107,7 @@ class SearchController: UIViewController {
 // MARK: - UISearchResultsUpdating
 
 extension SearchController: UISearchResultsUpdating {
+
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else { return }
 
@@ -122,6 +123,7 @@ extension SearchController: UISearchResultsUpdating {
 // MARK: - UISearchBarDelegate
 
 extension SearchController: UISearchBarDelegate {
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         collectionView.isHidden = true
@@ -140,6 +142,7 @@ extension SearchController: UISearchBarDelegate {
 // MARK: - UITableViewDataSource
 
 extension SearchController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return inSearchMode ? filteredUsers.count : users.count
     }
@@ -164,6 +167,7 @@ extension SearchController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SearchController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = inSearchMode ? filteredUsers[indexPath.row] : users[indexPath.row]
         let controller = ProfileController(user: user)
@@ -202,6 +206,7 @@ extension SearchController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension SearchController: UICollectionViewDelegate {
+
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
@@ -215,6 +220,7 @@ extension SearchController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension SearchController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,

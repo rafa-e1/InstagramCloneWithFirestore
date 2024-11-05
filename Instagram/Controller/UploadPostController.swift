@@ -132,6 +132,7 @@ class UploadPostController: UIViewController {
 // MARK: - UITextViewDelegate
 
 extension UploadPostController: UITextViewDelegate {
+    
     func textViewDidChange(_ textView: UITextView) {
         checkMaxLength(textView)
         let count = textView.text.count

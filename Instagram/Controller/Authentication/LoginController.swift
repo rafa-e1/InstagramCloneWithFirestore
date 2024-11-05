@@ -160,6 +160,7 @@ class LoginController: UIViewController {
 // MARK: - FormViewModel
 
 extension LoginController: FormViewModel {
+    
     func updateForm() {
         UIView.animate(withDuration: 0.5) {
             self.loginButton.backgroundColor = self.viewModel.buttonBackgroundColor
@@ -180,8 +181,13 @@ extension LoginController: FormViewModel {
 // MARK: - ResetPasswordControllerDelegate
 
 extension LoginController: ResetPasswordControllerDelegate {
+
     func controllerDidSendResetPasswordLink(_ controller: ResetPasswordController) {
         navigationController?.popViewController(animated: true)
-        showMessage(withTitle: "Success", message: "We sent a link to your email to reset your password")
+
+        showMessage(
+            withTitle: "Success",
+            message: "We sent a link to your email to reset your password"
+        )
     }
 }

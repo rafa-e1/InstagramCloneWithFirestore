@@ -82,6 +82,7 @@ class CommentController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 
 extension CommentController {
+
     override func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -107,6 +108,7 @@ extension CommentController {
 // MARK: - UICollectionViewDelegate
 
 extension CommentController {
+
     override func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
@@ -122,6 +124,7 @@ extension CommentController {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension CommentController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -144,6 +147,7 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
 // MARK: - CommentInputAccessoryViewDelegate
 
 extension CommentController: CommentInputAccessoryViewDelegate {
+    
     func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String) {
         guard let tab = tabBarController as? MainTabBarController else { return }
         guard let currentUser = tab.user else { return }
