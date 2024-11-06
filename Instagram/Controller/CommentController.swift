@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "CommentCell"
 
-class CommentController: UICollectionViewController {
+final class CommentController: UICollectionViewController {
     
     // MARK: - Properties
     

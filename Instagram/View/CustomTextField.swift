@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTextField: UITextField {
+final class CustomTextField: UITextField {
     
     init(placeholder: String, isPassword: Bool) {
         super.init(frame: .zero)

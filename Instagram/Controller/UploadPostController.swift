@@ -11,7 +11,7 @@ protocol UploadPostControllerDelegate: AnyObject {
     func controllerDidFinishUploadingPost(_ controller: UploadPostController)
 }
 
-class UploadPostController: UIViewController {
+final class UploadPostController: UIViewController {
     
     // MARK: - Properties
     

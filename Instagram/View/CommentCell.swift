@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CommentCell: UICollectionViewCell {
-    
+final class CommentCell: UICollectionViewCell {
+
     // MARK: - Properties
     
     var viewModel: CommentViewModel? {

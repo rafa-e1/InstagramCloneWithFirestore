@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import YPImagePicker
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     
     // MARK: - Properties
     

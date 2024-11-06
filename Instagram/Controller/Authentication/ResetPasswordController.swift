@@ -11,7 +11,7 @@ protocol ResetPasswordControllerDelegate: AnyObject {
     func controllerDidSendResetPasswordLink(_ controller: ResetPasswordController)
 }
 
-class ResetPasswordController: UIViewController {
+final class ResetPasswordController: UIViewController {
 
     // MARK: - Properties
 

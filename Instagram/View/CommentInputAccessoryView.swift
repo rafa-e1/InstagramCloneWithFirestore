@@ -11,7 +11,7 @@ protocol CommentInputAccessoryViewDelegate: AnyObject {
     func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String)
 }
 
-class CommentInputAccessoryView: UIView {
+final class CommentInputAccessoryView: UIView {
     
     // MARK: - Properties
     

@@ -11,7 +11,7 @@ import FirebaseAuth
 
 private let reuseIdentifier = "FeedCell"
 
-class FeedController: UICollectionViewController {
+final class FeedController: UICollectionViewController {
     
     // MARK: - Lifecycle
     

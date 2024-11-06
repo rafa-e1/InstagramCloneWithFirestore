@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "NotificationCell"
 
-class NotificationController: UITableViewController {
+final class NotificationController: UITableViewController {
 
     // MARK: - Properties
 

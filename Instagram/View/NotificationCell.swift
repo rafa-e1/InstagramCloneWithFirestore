@@ -13,7 +13,7 @@ protocol NotificationCellDelegate: AnyObject {
     func cell(_ cell: NotificationCell, wantsToViewPost postID: String)
 }
 
-class NotificationCell: UITableViewCell {
+final class NotificationCell: UITableViewCell {
 
     // MARK: - Properties
 

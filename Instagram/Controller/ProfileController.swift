@@ -10,7 +10,7 @@ import UIKit
 private let reuseIdentifier = "ProfileCell"
 private let headerIdentifier = "ProfileHeader"
 
-class ProfileController: UICollectionViewController {
+final class ProfileController: UICollectionViewController {
     
     // MARK: - Properties
     

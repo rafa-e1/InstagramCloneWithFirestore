@@ -10,7 +10,7 @@ import UIKit
 private let reuseIdentifier = "UserCell"
 private let postCellIdentifier = "ProfileCell"
 
-class SearchController: UIViewController {
+final class SearchController: UIViewController {
 
     // MARK: - Properties
     

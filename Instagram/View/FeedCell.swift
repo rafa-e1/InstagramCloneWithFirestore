@@ -14,7 +14,7 @@ protocol FeedCellDelegate: AnyObject {
     func cell(_ cell: FeedCell, wantsToShare post: Post)
 }
 
-class FeedCell: UICollectionViewCell {
+final class FeedCell: UICollectionViewCell {
     
     // MARK: - Properties
     
