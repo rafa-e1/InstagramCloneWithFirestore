@@ -39,6 +39,7 @@ extension UIViewController {
 }
 
 extension UIButton {
+    
     func attributedTitle(firstPart: String, secondPart: String) {
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(white: 1, alpha: 0.87),

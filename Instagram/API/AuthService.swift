@@ -19,6 +19,7 @@ struct AuthCredentials {
 }
 
 struct AuthService {
+
     static func logUserIn(
         withEmail email: String,
         password: String,
