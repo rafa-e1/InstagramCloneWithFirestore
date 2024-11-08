@@ -177,7 +177,11 @@ struct PostService {
                     .setData([:])
             }
 
-            COLLECTION_USERS.document(uid).collection("user-feed").document(postID).setData([:])
+            COLLECTION_USERS
+                .document(uid)
+                .collection("user-feed")
+                .document(postID)
+                .setData([:])
         }
     }
 }
