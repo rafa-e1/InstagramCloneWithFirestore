@@ -24,7 +24,7 @@ class BaseViewController: UIViewController {
 
     // MARK: - UI
 
-    private func setStyle() {}
-    private func setHierarch() {}
-    private func setLayout() {}
+    func setStyle() {}
+    func setHierarch() {}
+    func setLayout() {}
 }
