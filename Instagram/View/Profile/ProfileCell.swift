@@ -7,38 +7,41 @@
 
 import UIKit
 
-final class ProfileCell: UICollectionViewCell {
+final class ProfileCell: BaseCollectionViewCell {
     
     // MARK: - Properties
     
     var viewModel: PostViewModel? {
         didSet { configure() }
     }
-    
-    private let postImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "venom-7")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    // MARK: - Lifecycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        addSubview(postImageView)
-        postImageView.fillSuperview()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
+    private let postImageView = UIImageView()
+
+    // MARK: - Helpers
+
     func configure() {
         guard let viewModel = viewModel else { return }
         
         postImageView.sd_setImage(with: viewModel.imageURL)
+    }
+
+    // MARK: - UI
+
+    override func setStyle() {
+        postImageView.do {
+            $0.image = #imageLiteral(resourceName: "venom-7")
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+        }
+    }
+
+    override func setHierarch() {
+        addSubview(postImageView)
+    }
+
+    override func setLayout() {
+        postImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
