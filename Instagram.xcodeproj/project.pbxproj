@@ -36,6 +36,7 @@
 		05874F0D2C43A863003642AF /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874F0C2C43A863003642AF /* CommentViewModel.swift */; };
 		05A130522CABF04F007BF4FB /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130512CABF04F007BF4FB /* NotificationCell.swift */; };
 		05A2DDD52CCA61DD001286F6 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A2DDD42CCA61DD001286F6 /* NotificationViewModel.swift */; };
+		05C2EE162D0418DD000B336C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C2EE152D0418DD000B336C /* UIView+.swift */; };
 		05E2A6D32CB676DE00B5D243 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A6D22CB676DE00B5D243 /* Notification.swift */; };
 		05E2A7892CB81C6300B5D243 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A7882CB81C6300B5D243 /* NotificationService.swift */; };
 		05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC372BF44C8800D59D64 /* AppDelegate.swift */; };
@@ -89,6 +90,7 @@
 		05874F0C2C43A863003642AF /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		05A130512CABF04F007BF4FB /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		05A2DDD42CCA61DD001286F6 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		05C2EE152D0418DD000B336C /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		05E2A6D22CB676DE00B5D243 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		05E2A7882CB81C6300B5D243 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		05E3DC342BF44C8800D59D64 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				05F737CE2CFDA3E20030B7F5 /* ReusableIdentifier+.swift */,
+				05C2EE152D0418DD000B336C /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				05E3DC562BF4518100D59D64 /* SearchController.swift in Sources */,
 				05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */,
 				0523664A2BF83A9C000874AE /* User.swift in Sources */,
+				05C2EE162D0418DD000B336C /* UIView+.swift in Sources */,
 				05E3DC5C2BF4519900D59D64 /* ProfileController.swift in Sources */,
 				0523664C2BF83D58000874AE /* ProfileHeaderViewModel.swift in Sources */,
 				05874EF72C39A3AB003642AF /* InputTextView.swift in Sources */,
