@@ -37,6 +37,7 @@
 		05A130522CABF04F007BF4FB /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130512CABF04F007BF4FB /* NotificationCell.swift */; };
 		05A2DDD52CCA61DD001286F6 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A2DDD42CCA61DD001286F6 /* NotificationViewModel.swift */; };
 		05C2EE162D0418DD000B336C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C2EE152D0418DD000B336C /* UIView+.swift */; };
+		05C2EE182D041917000B336C /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C2EE172D041917000B336C /* UIStackView+.swift */; };
 		05E2A6D32CB676DE00B5D243 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A6D22CB676DE00B5D243 /* Notification.swift */; };
 		05E2A7892CB81C6300B5D243 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A7882CB81C6300B5D243 /* NotificationService.swift */; };
 		05E3DC382BF44C8800D59D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC372BF44C8800D59D64 /* AppDelegate.swift */; };
@@ -91,6 +92,7 @@
 		05A130512CABF04F007BF4FB /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		05A2DDD42CCA61DD001286F6 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		05C2EE152D0418DD000B336C /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		05C2EE172D041917000B336C /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		05E2A6D22CB676DE00B5D243 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		05E2A7882CB81C6300B5D243 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		05E3DC342BF44C8800D59D64 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				05F737CE2CFDA3E20030B7F5 /* ReusableIdentifier+.swift */,
+				05C2EE172D041917000B336C /* UIStackView+.swift */,
 				05C2EE152D0418DD000B336C /* UIView+.swift */,
 			);
 			path = Extension;
@@ -450,6 +453,7 @@
 				053E72452CD22373006F805B /* ResetPasswordController.swift in Sources */,
 				05E3DC542BF4517700D59D64 /* FeedController.swift in Sources */,
 				050F8EDC2C01D386003B7820 /* UserCellViewModel.swift in Sources */,
+				05C2EE182D041917000B336C /* UIStackView+.swift in Sources */,
 				05E3DC522BF4511D00D59D64 /* MainTabBarController.swift in Sources */,
 				05E3DCAB2BF46B3200D59D64 /* Extensions.swift in Sources */,
 				052366192BF6E0FF000874AE /* ImageUploader.swift in Sources */,
