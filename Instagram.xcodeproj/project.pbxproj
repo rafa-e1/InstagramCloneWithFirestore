@@ -177,6 +177,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		05C2EE192D08312C000B336C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				052366102BF6DBAE000874AE /* CustomTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		05E3DC2B2BF44C8800D59D64 = {
 			isa = PBXGroup;
 			children = (
@@ -247,8 +255,8 @@
 		05E3DC4F2BF44CBA00D59D64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				05C2EE192D08312C000B336C /* Components */,
 				052366442BF8210A000874AE /* Profile */,
-				052366102BF6DBAE000874AE /* CustomTextField.swift */,
 				05E3DCA82BF46A6400D59D64 /* FeedCell.swift */,
 				050F8ED92C01C168003B7820 /* UserCell.swift */,
 				05874F042C411911003642AF /* CommentCell.swift */,
