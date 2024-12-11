@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "user-filled.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "profile_selected@2x.png",
+      "filename" : "user-filled@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "user-filled@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
