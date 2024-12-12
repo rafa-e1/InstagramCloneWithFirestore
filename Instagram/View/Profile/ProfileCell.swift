@@ -35,7 +35,7 @@ final class ProfileCell: BaseCollectionViewCell {
         }
     }
 
-    override func setHierarch() {
+    override func setHierarchy() {
         addSubview(postImageView)
     }
 

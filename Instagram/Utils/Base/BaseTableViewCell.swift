@@ -18,7 +18,7 @@ class BaseTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setStyle()
-        setHierarch()
+        setHierarchy()
         setLayout()
     }
 
@@ -29,6 +29,6 @@ class BaseTableViewCell: UITableViewCell {
     // MARK: - UI
 
     func setStyle() {}
-    func setHierarch() {}
+    func setHierarchy() {}
     func setLayout() {}
 }

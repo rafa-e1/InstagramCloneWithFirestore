@@ -18,7 +18,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setStyle()
-        setHierarch()
+        setHierarchy()
         setLayout()
     }
 
@@ -29,6 +29,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
     // MARK: - UI
 
     func setStyle() {}
-    func setHierarch() {}
+    func setHierarchy() {}
     func setLayout() {}
 }
