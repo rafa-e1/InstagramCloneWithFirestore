@@ -18,13 +18,13 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         setStyle()
-        setHierarch()
+        setHierarchy()
         setLayout()
     }
 
     // MARK: - UI
 
     func setStyle() {}
-    func setHierarch() {}
+    func setHierarchy() {}
     func setLayout() {}
 }
