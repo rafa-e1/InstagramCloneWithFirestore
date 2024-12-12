@@ -25,7 +25,7 @@ final class RegistrationController: UIViewController {
 
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        button.setImage(.plusPhoto, for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(handleProfilePhotoSelect), for: .touchUpInside)
         return button

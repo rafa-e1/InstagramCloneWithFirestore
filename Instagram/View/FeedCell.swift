@@ -59,7 +59,7 @@ final class FeedCell: UICollectionViewCell {
     
     private lazy var commentButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "comment"), for: .normal)
+        button.setImage(.comment, for: .normal)
         button.tintColor = .black
         button.addTarget(self, action: #selector(didTapComments), for: .touchUpInside)
         return button
@@ -67,7 +67,7 @@ final class FeedCell: UICollectionViewCell {
     
     private lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "send"), for: .normal)
+        button.setImage(.send, for: .normal)
         button.tintColor = .black
         button.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
         return button

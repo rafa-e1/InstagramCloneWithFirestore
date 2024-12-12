@@ -117,15 +117,15 @@ final class ProfileHeader: UICollectionReusableView {
             axis: .horizontal
         )
 
-        gridButton.setImage(UIImage(named: "grid"), for: .normal)
+        gridButton.setImage(.grid, for: .normal)
 
         listButton.do {
-            $0.setImage(UIImage(named: "list"), for: .normal)
+            $0.setImage(.list, for: .normal)
             $0.tintColor = UIColor(white: 0, alpha: 0.2)
         }
 
         bookmarkButton.do {
-            $0.setImage(UIImage(named: "ribbon"), for: .normal)
+            $0.setImage(.bookmarkUnselected, for: .normal)
             $0.tintColor = UIColor(white: 0, alpha: 0.2)
         }
 
