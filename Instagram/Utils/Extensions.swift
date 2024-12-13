@@ -61,7 +61,7 @@ extension UIButton {
         setAttributedTitle(attributedTitle, for: .normal)
     }
     
-    func customButton(title: String, action: Selector) {
+    func customButton(title: String) {
         setHeight(50)
         setTitle(title, for: .normal)
         setTitleColor(.white.withAlphaComponent(0.67), for: .normal)
@@ -69,7 +69,6 @@ extension UIButton {
         layer.cornerRadius = 5
         titleLabel?.font = .boldSystemFont(ofSize: 20)
         isEnabled = false
-        addTarget(nil, action: action, for: .touchUpInside)
     }
 }
 
