@@ -7,60 +7,29 @@
 
 import UIKit
 
-final class RegistrationController: UIViewController {
-    
+final class RegistrationController: BaseViewController {
+
     // MARK: - Properties
-    
+
+    weak var delegate: AuthenticationDelegate?
     private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
-    weak var delegate: AuthenticationDelegate?
-
-    private lazy var backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .white
-        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var addPhotoButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(.plusPhoto, for: .normal)
-        button.tintColor = .white
-        button.addTarget(self, action: #selector(handleProfilePhotoSelect), for: .touchUpInside)
-        return button
-    }()
-    
+    private let backButton = UIButton(type: .system)
+    private let addPhotoButton = UIButton(type: .system)
     private let emailTextField = CustomTextField(placeholder: "Email", isPassword: false)
     private let passwordTextField = CustomTextField(placeholder: "Password", isPassword: true)
     private let fullnameTextField = CustomTextField(placeholder: "Fullname", isPassword: false)
     private let usernameTextField = CustomTextField(placeholder: "Username", isPassword: false)
-    
-    private let signUpButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.customButton(title: "Sign Up", action: #selector(handleSignUp))
-        return button
-    }()
-    
-    private lazy var alreadyHaveAccountButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.attributedTitle(
-            firstPart: "Already have an account?  ",
-            secondPart: "Log in"
-        )
-        
-        button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
-        
-        return button
-    }()
-    
+    private let signUpFormStackView = UIStackView()
+    private let signUpButton = UIButton(type: .system)
+    private let alreadyHaveAccountButton = UIButton(type: .system)
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
-        configureNotificationObservers()
+
+        setAddTargets()
     }
     
     // MARK: - Actions
@@ -120,51 +89,100 @@ final class RegistrationController: UIViewController {
     }
     
     // MARK: - Helpers
-    
-    func configureUI() {
+
+    private func setAddTargets() {
+        backButton.addTarget(
+            self,
+            action: #selector(handleDismissal),
+            for: .touchUpInside
+        )
+
+        addPhotoButton.addTarget(
+            self,
+            action: #selector(handleProfilePhotoSelect),
+            for: .touchUpInside
+        )
+
+        signUpButton.addTarget(
+            self,
+            action: #selector(handleSignUp),
+            for: .touchUpInside
+        )
+
+        alreadyHaveAccountButton.addTarget(
+            self,
+            action: #selector(handleShowLogin),
+            for: .touchUpInside
+        )
+
+        [emailTextField, passwordTextField, fullnameTextField, usernameTextField].forEach {
+            $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        }
+    }
+
+    // MARK: - UI
+
+    override func setStyle() {
         configureGradientLayer()
 
-        view.addSubview(backButton)
-        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
+        backButton.do {
+            $0.tintColor = .white
+            $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        }
 
-        view.addSubview(addPhotoButton)
-        addPhotoButton.centerX(inView: view)
-        addPhotoButton.setDimensions(height: 140, width: 140)
-        addPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
-        
-        let stack = UIStackView(
-            arrangedSubviews: [
+        addPhotoButton.do {
+            $0.tintColor = .white
+            $0.setImage(.plusPhoto, for: .normal)
+        }
+
+        signUpButton.customButton(title: "Sign Up")
+
+        signUpFormStackView.configureStackView(
+            addArrangedSubviews:
                 emailTextField,
                 passwordTextField,
                 fullnameTextField,
                 usernameTextField,
-                signUpButton
-            ]
+                signUpButton,
+            spacing: 20
         )
-        
-        stack.axis = .vertical
-        stack.spacing = 20
-        
-        view.addSubview(stack)
-        stack.anchor(
-            top: addPhotoButton.bottomAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingTop: 32,
-            paddingLeft: 32,
-            paddingRight: 32
+
+        alreadyHaveAccountButton.attributedTitle(
+            firstPart: "Already have an account?  ",
+            secondPart: "Log in"
         )
-        
-        view.addSubview(alreadyHaveAccountButton)
-        alreadyHaveAccountButton.centerX(inView: view)
-        alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
-    
-    func configureNotificationObservers() {
-        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+
+    override func setHierarchy() {
+        view.addSubviews(
+            backButton,
+            addPhotoButton,
+            signUpFormStackView,
+            alreadyHaveAccountButton
+        )
+    }
+
+    override func setLayout() {
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            $0.leading.equalTo(16)
+        }
+
+        addPhotoButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(32)
+            $0.size.equalTo(140)
+        }
+
+        signUpFormStackView.snp.makeConstraints {
+            $0.top.equalTo(addPhotoButton.snp.bottom).offset(32)
+            $0.horizontalEdges.equalToSuperview().inset(32)
+        }
+
+        alreadyHaveAccountButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
 }
 
