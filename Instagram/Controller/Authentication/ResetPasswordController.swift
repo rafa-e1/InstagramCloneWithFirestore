@@ -34,7 +34,7 @@ final class ResetPasswordController: UIViewController {
 
     private lazy var resetPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.customButton(title: "Reset Password", action: #selector(handleResetPassword))
+        button.customButton(title: "Reset Password")
         return button
     }()
 

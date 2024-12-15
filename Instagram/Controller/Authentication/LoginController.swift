@@ -29,7 +29,7 @@ final class LoginController: UIViewController {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.customButton(title: "Log in", action: #selector(handleLogin))
+        button.customButton(title: "Log in")
         return button
     }()
     
