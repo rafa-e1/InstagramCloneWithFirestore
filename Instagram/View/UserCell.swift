@@ -7,66 +7,18 @@
 
 import UIKit
 
-final class UserCell: UITableViewCell {
-    
+final class UserCell: BaseTableViewCell {
+
     // MARK: - Properties
     
     var viewModel: UserCellViewModel? {
-        didSet {
-            configure()
-        }
+        didSet { configure() }
     }
     
-    private let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.backgroundColor = .lightGray
-        imageView.image = #imageLiteral(resourceName: "venom-7")
-        return imageView
-    }()
-    
-    private let usernameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 14)
-        label.text = "venom"
-        return label
-    }()
-    
-    private let fullnameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.text = "Eddie Brock"
-        label.textColor = .lightGray
-        return label
-    }()
-    
-    // MARK: - Lifecycle
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        addSubview(profileImageView)
-        profileImageView.setDimensions(height: 48, width: 48)
-        profileImageView.layer.cornerRadius = 48 / 2
-        profileImageView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
-        
-        let stack = UIStackView(arrangedSubviews: [usernameLabel, fullnameLabel])
-        stack.axis = .vertical
-        stack.spacing = 4
-        stack.alignment = .leading
-        
-        addSubview(stack)
-        stack.centerY(
-            inView: profileImageView,
-            leftAnchor: profileImageView.rightAnchor,
-            paddingLeft: 8
-        )
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private let profileImageView = UIImageView()
+    private let usernameLabel = UILabel()
+    private let fullnameLabel = UILabel()
+    private let nameStackView = UIStackView()
     
     // MARK: - Helpers
     
@@ -77,5 +29,48 @@ final class UserCell: UITableViewCell {
         usernameLabel.text = viewModel.username
         fullnameLabel.text = viewModel.fullname
     }
-    
+
+    // MARK: - UI
+
+    override func setStyle() {
+        profileImageView.do {
+            $0.layer.cornerRadius = 48 / 2
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+            $0.backgroundColor = .lightGray
+            $0.image = #imageLiteral(resourceName: "venom-7")
+        }
+
+        usernameLabel.do {
+            $0.font = .boldSystemFont(ofSize: 14)
+        }
+
+        fullnameLabel.do {
+            $0.textColor = .lightGray
+            $0.font = .systemFont(ofSize: 14)
+        }
+
+        nameStackView.configureStackView(
+            addArrangedSubviews: usernameLabel, fullnameLabel,
+            alignment: .leading,
+            spacing: 4
+        )
+    }
+
+    override func setHierarchy() {
+        contentView.addSubviews(profileImageView, nameStackView)
+    }
+
+    override func setLayout() {
+        profileImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(12)
+            $0.size.equalTo(48)
+        }
+
+        nameStackView.snp.makeConstraints {
+            $0.centerY.equalTo(profileImageView)
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(8)
+        }
+    }
 }
