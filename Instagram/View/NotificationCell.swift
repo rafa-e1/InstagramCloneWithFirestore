@@ -13,7 +13,7 @@ protocol NotificationCellDelegate: AnyObject {
     func cell(_ cell: NotificationCell, wantsToViewPost postID: String)
 }
 
-final class NotificationCell: UITableViewCell {
+final class NotificationCell: BaseTableViewCell {
 
     // MARK: - Properties
 
@@ -23,75 +23,17 @@ final class NotificationCell: UITableViewCell {
         didSet { configure() }
     }
 
-    private lazy var profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.backgroundColor = .lightGray
-        return imageView
-    }()
-
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 14)
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var postImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .lightGray
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.isUserInteractionEnabled = true
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handlePostTapped))
-        imageView.addGestureRecognizer(tap)
-
-        return imageView
-    }()
-
-    private lazy var followButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Loading", for: .normal)
-        button.layer.cornerRadius = 3
-        button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.lightGray.cgColor
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(
-            self,
-            action: #selector(handleFollowTapped),
-            for: .touchUpInside
-        )
-        return button
-    }()
+    private let profileImageView = UIImageView()
+    private let infoLabel = UILabel()
+    private let postImageView = UIImageView()
+    private let followButton = UIButton(type: .system)
 
     // MARK: - Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        addSubview(profileImageView)
-        profileImageView.setDimensions(height: 48, width: 48)
-        profileImageView.layer.cornerRadius = 48 / 2
-        profileImageView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
-
-        contentView.addSubview(followButton)
-        followButton.centerY(inView: self)
-        followButton.anchor(right: rightAnchor, paddingRight: 12, width: 88, height: 32)
-
-        contentView.addSubview(postImageView)
-        postImageView.centerY(inView: self)
-        postImageView.anchor(right: rightAnchor, paddingRight: 12, width: 48, height: 48)
-
-        contentView.addSubview(infoLabel)
-        infoLabel.centerY(
-            inView: profileImageView,
-            leftAnchor: profileImageView.rightAnchor,
-            paddingLeft: 8
-        )
-        infoLabel.anchor(right: followButton.leftAnchor, paddingRight: 4)
+        setAddTargets()
     }
 
     required init?(coder: NSCoder) {
@@ -108,6 +50,7 @@ final class NotificationCell: UITableViewCell {
 
     @objc private func handleFollowTapped() {
         guard let viewModel = viewModel else { return }
+
         if viewModel.notification.userIsFollowed {
             delegate?.cell(self, wantsToUnfollow: viewModel.notification.uid)
         } else {
@@ -131,5 +74,87 @@ final class NotificationCell: UITableViewCell {
         followButton.setTitle(viewModel.followButtonText, for: .normal)
         followButton.backgroundColor = viewModel.followButtonBackgroundColor
         followButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+    }
+
+    private func setAddTargets() {
+        postImageView.addGestureRecognizer(
+            UIGestureRecognizer(
+                target: self,
+                action: #selector(handlePostTapped)
+            )
+        )
+
+        followButton.addTarget(
+            self,
+            action: #selector(handleFollowTapped),
+            for: .touchUpInside
+        )
+    }
+
+    // MARK: - UI
+
+    override func setStyle() {
+        profileImageView.do {
+            $0.contentMode = .scaleAspectFill
+            $0.backgroundColor = .lightGray
+            $0.layer.cornerRadius = 48 / 2
+            $0.clipsToBounds = true
+        }
+
+        infoLabel.do {
+            $0.font = .boldSystemFont(ofSize: 14)
+            $0.numberOfLines = 0
+        }
+
+        postImageView.do {
+            $0.backgroundColor = .lightGray
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+        }
+
+        followButton.do {
+            $0.setTitle("Loading", for: .normal)
+            $0.layer.cornerRadius = 3
+            $0.layer.borderWidth = 0.5
+            $0.layer.borderColor = UIColor.lightGray.cgColor
+            $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            $0.setTitleColor(.black, for: .normal)
+        }
+    }
+
+    override func setHierarchy() {
+        contentView.addSubviews(
+            profileImageView,
+            followButton,
+            postImageView,
+            infoLabel
+        )
+    }
+
+    override func setLayout() {
+        profileImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(12)
+            $0.size.equalTo(48)
+        }
+
+        followButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(-12)
+            $0.width.equalTo(88)
+            $0.height.equalTo(32)
+        }
+
+        postImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(-12)
+            $0.size.equalTo(48)
+        }
+
+        infoLabel.snp.makeConstraints {
+            $0.centerY.equalTo(profileImageView)
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(8)
+            $0.trailing.equalTo(followButton.snp.leading).offset(-4)
+        }
     }
 }
