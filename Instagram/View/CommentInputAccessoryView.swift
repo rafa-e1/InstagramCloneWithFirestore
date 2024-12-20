@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 protocol CommentInputAccessoryViewDelegate: AnyObject {
     func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String)
 }
@@ -17,65 +20,32 @@ final class CommentInputAccessoryView: UIView {
     
     weak var delegate: CommentInputAccessoryViewDelegate?
     
-    private let commentTextView: InputTextView = {
-        let textView = InputTextView()
-        textView.placeholderText = "Enter comment.."
-        textView.font = .systemFont(ofSize: 15)
-        textView.isScrollEnabled = false
-        textView.placeholderShouldCenter = true
-        return textView
-    }()
-    
-    private lazy var postButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Post", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.addTarget(self, action: #selector(handlePostTapped), for: .touchUpInside)
-        return button
-    }()
-    
+    private let commentTextView = InputTextView()
+    private let postButton = UIButton(type: .system)
+    private let divider = UIView()
+
+    override var intrinsicContentSize: CGSize {
+        return .zero
+    }
+
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .white
-        autoresizingMask = .flexibleHeight
-        
-        addSubview(postButton)
-        postButton.anchor(top: topAnchor, right: rightAnchor, paddingRight: 8)
-        postButton.setDimensions(height: 50, width: 50)
-        
-        addSubview(commentTextView)
-        commentTextView.anchor(
-            top: topAnchor,
-            left: leftAnchor,
-            bottom: safeAreaLayoutGuide.bottomAnchor,
-            right: postButton.leftAnchor,
-            paddingTop: 8,
-            paddingLeft: 8,
-            paddingBottom: 8,
-            paddingRight: 8
-        )
-        
-        let divider = UIView()
-        divider.backgroundColor = .lightGray
-        addSubview(divider)
-        divider.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, height: 0.5)
+
+        setAddTargets()
+        setStyle()
+        setHierarchy()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var intrinsicContentSize: CGSize {
-        return .zero
-    }
-    
     // MARK: - Actions
     
-    @objc func handlePostTapped() {
+    @objc private func handlePostTapped() {
         delegate?.inputView(self, wantsToUploadComment: commentTextView.text)
     }
     
@@ -84,5 +54,58 @@ final class CommentInputAccessoryView: UIView {
     func clearCommentTextView() {
         commentTextView.text = nil
         commentTextView.placeholderLabel.isHidden = false
+    }
+
+    private func setAddTargets() {
+        postButton.addTarget(
+            self,
+            action: #selector(handlePostTapped),
+            for: .touchUpInside
+        )
+    }
+
+    // MARK: - UI
+
+    private func setStyle() {
+        backgroundColor = .white
+        autoresizingMask = .flexibleHeight
+
+        postButton.do {
+            $0.setTitle("Post", for: .normal)
+            $0.setTitleColor(.black, for: .normal)
+            $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        }
+
+        commentTextView.do {
+            $0.placeholderText = "Enter comment.."
+            $0.font = .systemFont(ofSize: 15)
+            $0.isScrollEnabled = false
+            $0.placeholderShouldCenter = true
+        }
+
+        divider.backgroundColor = .lightGray
+    }
+
+    private func setHierarchy() {
+        addSubviews(postButton, commentTextView, divider)
+    }
+
+    private func setLayout() {
+        postButton.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.trailing.equalTo(-8)
+            $0.size.equalTo(50)
+        }
+
+        commentTextView.snp.makeConstraints {
+            $0.top.leading.equalTo(8)
+            $0.trailing.equalTo(postButton.snp.leading).offset(-8)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-8)
+        }
+
+        divider.snp.makeConstraints {
+            $0.top.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(0.5)
+        }
     }
 }
