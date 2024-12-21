@@ -11,59 +11,28 @@ protocol AuthenticationDelegate: AnyObject {
     func authenticationDidComplete()
 }
 
-final class LoginController: UIViewController {
-    
+final class LoginController: BaseViewController {
+
     // MARK: - Properties
     
     private var viewModel = LoginViewModel()
     weak var delegate: AuthenticationDelegate?
-    
-    private let iconImage: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
+
+    private let gradient = CAGradientLayer()
+    private let iconImage = UIImageView()
     private let emailTextField = CustomTextField(placeholder: "Email", isPassword: false)
     private let passwordTextField = CustomTextField(placeholder: "Password", isPassword: true)
-    
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.customButton(title: "Log in")
-        return button
-    }()
-    
-    private lazy var forgotPasswordButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.attributedTitle(
-            firstPart: "Forgot your password? ",
-            secondPart: "Get help signing in."
-        )
-        
-        button.addTarget(self, action: #selector(handleShowResetPassword), for: .touchUpInside)
-
-        return button
-    }()
-    
-    private lazy var dontHaveAccountButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.attributedTitle(
-            firstPart: "Don't have an account?  ",
-            secondPart: "Sign Up"
-        )
-        
-        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
-        
-        return button
-    }()
+    private let loginButton = UIButton(type: .system)
+    private let forgotPasswordButton = UIButton(type: .system)
+    private let loginStackView = UIStackView()
+    private let dontHaveAccountButton = UIButton(type: .system)
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
-        configureNotificationObservers()
+
+        setAddTargets()
     }
     
     // MARK: - Actions
@@ -104,57 +73,96 @@ final class LoginController: UIViewController {
         
         updateForm()
     }
-    
-    // MARK: - Helpers
-    
-    func configureUI() {
-        configureGradientLayer()
+
+    private func setAddTargets() {
+        [emailTextField, passwordTextField].forEach {
+            $0.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        }
+
+        loginButton.addTarget(
+            self,
+            action: #selector(handleLogin),
+            for: .touchUpInside
+        )
+
+        forgotPasswordButton.addTarget(
+            self,
+            action: #selector(handleShowResetPassword),
+            for: .touchUpInside
+        )
+
+        dontHaveAccountButton.addTarget(
+            self,
+            action: #selector(handleShowSignUp),
+            for: .touchUpInside
+        )
+    }
+
+    // MARK: - UI
+
+    override func setStyle() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-        
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
-        
-        view.addSubview(iconImage)
-        iconImage.centerX(inView: view)
-        iconImage.setDimensions(height: 80, width: 120)
-        iconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
-        
-        let stack = UIStackView(
-            arrangedSubviews: [
+
+        configureGradientLayer()
+
+        gradient.do {
+            $0.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+            $0.locations = [0, 1]
+        }
+
+        iconImage.do {
+            $0.image = .instagramLogoWhite
+            $0.contentMode = .scaleAspectFill
+        }
+
+        loginButton.customButton(title: "Log in")
+
+        forgotPasswordButton.attributedTitle(
+            firstPart: "Forgot your password? ",
+            secondPart: "Get help signing in."
+        )
+
+        loginStackView.configureStackView(
+            addArrangedSubviews:
                 emailTextField,
                 passwordTextField,
                 loginButton,
-                forgotPasswordButton
-            ]
+                forgotPasswordButton,
+            spacing: 20
         )
-        
-        stack.axis = .vertical
-        stack.spacing = 20
-        
-        view.addSubview(stack)
-        stack.anchor(
-            top: iconImage.bottomAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingTop: 32,
-            paddingLeft: 32,
-            paddingRight: 32
+
+        dontHaveAccountButton.attributedTitle(
+            firstPart: "Don't have an account?  ",
+            secondPart: "Sign Up"
         )
-        
-        view.addSubview(dontHaveAccountButton)
-        dontHaveAccountButton.centerX(inView: view)
-        dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
-    
-    func configureNotificationObservers() {
-        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+
+    override func setHierarchy() {
+        view.layer.addSublayer(gradient)
+        view.addSubviews(iconImage, loginStackView, dontHaveAccountButton)
     }
-    
+
+    override func setLayout() {
+        gradient.frame = view.frame
+
+        iconImage.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(120)
+            $0.height.equalTo(80)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(32)
+        }
+
+        loginStackView.snp.makeConstraints {
+            $0.top.equalTo(iconImage.snp.bottom).offset(32)
+            $0.horizontalEdges.equalToSuperview().inset(32)
+        }
+
+        dontHaveAccountButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
 }
 
 // MARK: - FormViewModel
