@@ -7,10 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "UserCell"
-private let postCellIdentifier = "ProfileCell"
-
-final class SearchController: UIViewController {
+final class SearchController: BaseViewController {
 
     // MARK: - Properties
     
@@ -26,7 +23,6 @@ final class SearchController: UIViewController {
         cv.dataSource = self
         cv.delegate = self
         cv.backgroundColor = .white
-        cv.register(ProfileCell.self, forCellWithReuseIdentifier: postCellIdentifier)
         return cv
     }()
 
@@ -39,9 +35,8 @@ final class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureNavigationBar()
-        configureSearchController()
-        configureUI()
+        registerCells()
+        setDelegates()
         fetchUsers()
         fetchPosts()
     }
@@ -64,43 +59,59 @@ final class SearchController: UIViewController {
 
     // MARK: - Helpers
 
-    func configureNavigationBar() {
-        navigationController?.hidesBarsOnSwipe = false
-        navigationItem.title = "Explore"
-    }
+    private func registerCells() {
+        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
 
-    func configureUI() {
-        view.backgroundColor = .white
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.rowHeight = 64
-        tableView.isHidden = true
-
-        view.addSubview(tableView)
-        tableView.fillSuperview()
-
-        view.addSubview(collectionView)
-        collectionView.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            left: view.leftAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            right: view.rightAnchor
+        collectionView.register(
+            ProfileCell.self,
+            forCellWithReuseIdentifier: ProfileCell.identifier
         )
     }
 
-    func configureSearchController() {
+    private func setDelegates() {
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.autocapitalizationType = .none
-        searchController.searchBar.autocorrectionType = .no
-        searchController.searchBar.spellCheckingType = .no
-        searchController.searchBar.placeholder = "Search"
         searchController.searchBar.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+
+    // MARK: - UI
+
+    override func setStyle() {
+        navigationController?.hidesBarsOnSwipe = false
+        navigationItem.title = "Explore"
         navigationItem.searchController = searchController
         definesPresentationContext = false
+        view.backgroundColor = .white
+
+        searchController.do {
+            $0.obscuresBackgroundDuringPresentation = false
+            $0.hidesNavigationBarDuringPresentation = false
+            $0.searchBar.autocapitalizationType = .none
+            $0.searchBar.autocorrectionType = .no
+            $0.searchBar.spellCheckingType = .no
+            $0.searchBar.placeholder = "Search"
+        }
+
+        tableView.do {
+            $0.rowHeight = 64
+            $0.isHidden = true
+        }
+    }
+
+    override func setHierarchy() {
+        view.addSubviews(tableView, collectionView)
+    }
+
+    override func setLayout() {
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
+        collectionView.snp.makeConstraints {
+            $0.verticalEdges.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
+        }
     }
 }
 
@@ -152,7 +163,7 @@ extension SearchController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: reuseIdentifier,
+            withIdentifier: UserCell.identifier,
             for: indexPath
         ) as? UserCell else { return UITableViewCell() }
         
@@ -191,7 +202,7 @@ extension SearchController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: postCellIdentifier,
+            withReuseIdentifier: ProfileCell.identifier,
             for: indexPath
         ) as? ProfileCell else {
             return UICollectionViewCell()
