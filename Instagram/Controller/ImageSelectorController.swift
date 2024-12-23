@@ -7,12 +7,4 @@
 
 import UIKit
 
-final class ImageSelectorController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .white
-    }
-    
-}
+final class ImageSelectorController: BaseViewController {}
