@@ -50,7 +50,11 @@ final class NotificationController: UITableViewController {
             guard notification.type == .follow else { return }
 
             UserService.checkIfUserIsFollowed(uid: notification.uid) { isFollowed in
-                if let index = self.notifications.firstIndex(where: { $0.id == notification.id }) {
+                if let index = self.notifications.firstIndex(
+                    where: {
+                        $0.id == notification.id
+                    }
+                ) {
                     self.notifications[index].userIsFollowed = isFollowed
                 }
             }
