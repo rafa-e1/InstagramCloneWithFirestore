@@ -24,7 +24,10 @@ class BaseViewController: UIViewController {
 
     // MARK: - UI
 
-    func setStyle() {}
+    func setStyle() {
+        view.backgroundColor = .white
+    }
+
     func setHierarchy() {}
     func setLayout() {}
 }
