@@ -7,9 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "NotificationCell"
-
-final class NotificationController: UITableViewController {
+final class NotificationController: BaseViewController {
 
     // MARK: - Properties
 
