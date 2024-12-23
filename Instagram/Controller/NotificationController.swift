@@ -16,13 +16,13 @@ final class NotificationController: BaseViewController {
     }
 
     private let refresher = UIRefreshControl()
+    private let tableView = UITableView()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureTableView()
+
         fetchNotifications()
     }
 
@@ -61,33 +61,61 @@ final class NotificationController: BaseViewController {
 
     // MARK: - Helpers
 
-    func configureTableView() {
-        view.backgroundColor = .white
+    private func registerCells() {
+        tableView.register(
+            NotificationCell.self,
+            forCellReuseIdentifier: NotificationCell.identifier
+        )
+    }
+
+    private func setAddTargets() {
+        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+    }
+
+    // MARK: - UI
+
+    override func setStyle() {
         navigationItem.title = "Notifications"
 
-        tableView.register(NotificationCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.rowHeight = 80
-        tableView.separatorStyle = .none
+        tableView.do {
+            $0.rowHeight = 80
+            $0.separatorStyle = .none
+            $0.refreshControl = refresher
+        }
+    }
 
-        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-        tableView.refreshControl = refresher
+    override func setHierarchy() {
+        view.addSubview(tableView)
+    }
+
+    override func setLayout() {
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
-extension NotificationController {
+// MARK: - UITableViewDataSource
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension NotificationController: UITableViewDataSource {
+
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return notifications.count
     }
 
-    override func tableView(
+    func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: reuseIdentifier,
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: NotificationCell.identifier,
             for: indexPath
-        ) as! NotificationCell
+        ) as? NotificationCell else {
+            return UITableViewCell()
+        }
 
         cell.selectionStyle = .none
         cell.viewModel = NotificationViewModel(notification: notifications[indexPath.row])
@@ -97,9 +125,11 @@ extension NotificationController {
     }
 }
 
-extension NotificationController {
+// MARK: - UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension NotificationController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showLoader(true)
 
         UserService.fetchUser(withUID: notifications[indexPath.row].uid) { user in
@@ -109,6 +139,8 @@ extension NotificationController {
         }
     }
 }
+
+// MARK: - NotificationCellDelegate
 
 extension NotificationController: NotificationCellDelegate {
     
