@@ -23,6 +23,9 @@ final class NotificationController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        registerCells()
+        setAddTargets()
+        setDelegates()
         fetchNotifications()
     }
 
@@ -38,6 +41,7 @@ final class NotificationController: BaseViewController {
 
     func fetchNotifications() {
         NotificationService.fetchNotifications { notifications in
+            print("DEBUG: Success call..\(notifications)")
             self.notifications = notifications
             self.checkIfUserIsFollowed()
         }
@@ -70,6 +74,11 @@ final class NotificationController: BaseViewController {
 
     private func setAddTargets() {
         refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+    }
+
+    private func setDelegates() {
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
     // MARK: - UI
