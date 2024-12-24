@@ -8,7 +8,7 @@
 import UIKit
 
 private let reuseIdentifier = "ProfileCell"
-private let headerIdentifier = "ProfileHeader"
+
 
 final class ProfileController: UICollectionViewController {
     
@@ -67,11 +67,19 @@ final class ProfileController: UICollectionViewController {
     func configureCollectionView() {
         navigationItem.title = user.username
         collectionView.backgroundColor = .white
-        collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+
+
+    private func registerCells() {
+        collectionView.register(
+            ProfileCell.self,
+            forCellWithReuseIdentifier: ProfileCell.identifier
+        )
+
         collectionView.register(
             ProfileHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: headerIdentifier
+            withReuseIdentifier: ProfileHeader.identifier
         )
     }
 }
