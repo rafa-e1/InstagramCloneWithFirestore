@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "CommentCell"
-
 final class CommentController: UICollectionViewController {
     
     // MARK: - Properties
@@ -73,7 +71,7 @@ final class CommentController: UICollectionViewController {
         navigationItem.title = "Comments"
         
         collectionView.backgroundColor = .white
-        collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(CommentCell.self, forCellWithReuseIdentifier: CommentCell.identifier)
         collectionView.alwaysBounceVertical = true
         collectionView.keyboardDismissMode = .interactive
     }
@@ -95,7 +93,7 @@ extension CommentController {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: reuseIdentifier,
+            withReuseIdentifier: CommentCell.identifier,
             for: indexPath
         ) as? CommentCell else {
             return UICollectionViewCell()
