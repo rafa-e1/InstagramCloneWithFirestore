@@ -7,53 +7,65 @@
 
 import UIKit
 
-final class CommentController: UICollectionViewController {
+final class CommentController: BaseViewController {
     
     // MARK: - Properties
     
     private let post: Post
     private var comments = [Comment]()
     
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return cv
+    }()
+
     private lazy var commentInputView: CommentInputAccessoryView = {
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
-        let view = CommentInputAccessoryView(frame: frame)
+        let view = CommentInputAccessoryView()
         view.delegate = self
         return view
     }()
-    
-    // MARK: - Lifecycle
-    
+
+    override var inputAccessoryView: UIView? {
+        get { return commentInputView }
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+
+    // MARK: - Initializer
+
     init(post: Post) {
         self.post = post
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollectionView()
+
+        registerCells()
+        setDelegates()
         fetchComments()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+
         tabBarController?.tabBar.isHidden = false
-    }
-    
-    override var inputAccessoryView: UIView? {
-        get { return commentInputView }
-    }
-    
-    override var canBecomeFirstResponder: Bool {
-        return true
     }
     
     // MARK: - API
@@ -66,29 +78,54 @@ final class CommentController: UICollectionViewController {
     }
     
     // MARK: - Helpers
-    
-    func configureCollectionView() {
+
+    private func registerCells() {
+        collectionView.register(
+            CommentCell.self,
+            forCellWithReuseIdentifier: CommentCell.identifier
+        )
+    }
+
+    private func setDelegates() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+
+    // MARK: - UI
+
+    override func setStyle() {
         navigationItem.title = "Comments"
-        
-        collectionView.backgroundColor = .white
-        collectionView.register(CommentCell.self, forCellWithReuseIdentifier: CommentCell.identifier)
-        collectionView.alwaysBounceVertical = true
-        collectionView.keyboardDismissMode = .interactive
+
+        collectionView.do {
+            $0.backgroundColor = .white
+            $0.alwaysBounceVertical = true
+            $0.keyboardDismissMode = .interactive
+        }
+    }
+
+    override func setHierarchy() {
+        view.addSubview(collectionView)
+    }
+
+    override func setLayout() {
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension CommentController {
+extension CommentController: UICollectionViewDataSource {
 
-    override func collectionView(
+    func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
         return comments.count
     }
     
-    override func collectionView(
+    func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
@@ -105,9 +142,9 @@ extension CommentController {
 
 // MARK: - UICollectionViewDelegate
 
-extension CommentController {
+extension CommentController: UICollectionViewDelegate {
 
-    override func collectionView(
+    func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
