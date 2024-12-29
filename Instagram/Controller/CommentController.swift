@@ -8,12 +8,12 @@
 import UIKit
 
 final class CommentController: BaseViewController {
-    
+
     // MARK: - Properties
-    
+
     private let post: Post
     private var comments = [Comment]()
-    
+
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -21,11 +21,7 @@ final class CommentController: BaseViewController {
         return cv
     }()
 
-    private lazy var commentInputView: CommentInputAccessoryView = {
-        let view = CommentInputAccessoryView()
-        view.delegate = self
-        return view
-    }()
+    private let commentInputView = CommentInputAccessoryView()
 
     override var inputAccessoryView: UIView? {
         get { return commentInputView }
@@ -55,28 +51,28 @@ final class CommentController: BaseViewController {
         setDelegates()
         fetchComments()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         tabBarController?.tabBar.isHidden = true
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         tabBarController?.tabBar.isHidden = false
     }
-    
+
     // MARK: - API
-    
+
     func fetchComments() {
         CommentService.fetchComments(forPost: post.postID) { comments in
             self.comments = comments
             self.collectionView.reloadData()
         }
     }
-    
+
     // MARK: - Helpers
 
     private func registerCells() {
@@ -89,6 +85,7 @@ final class CommentController: BaseViewController {
     private func setDelegates() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        commentInputView.delegate = self
     }
 
     // MARK: - UI
@@ -124,7 +121,7 @@ extension CommentController: UICollectionViewDataSource {
     ) -> Int {
         return comments.count
     }
-    
+
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -169,7 +166,7 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
         let height = viewModel.size(forWidth: view.frame.width).height + 32
         return CGSize(width: view.frame.width, height: height)
     }
-    
+
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -182,13 +179,13 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
 // MARK: - CommentInputAccessoryViewDelegate
 
 extension CommentController: CommentInputAccessoryViewDelegate {
-    
+
     func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String) {
         guard let tab = tabBarController as? MainTabBarController else { return }
         guard let currentUser = tab.user else { return }
 
         showLoader(true)
-        
+
         CommentService.uploadComment(
             comment: comment,
             postID: post.postID,
