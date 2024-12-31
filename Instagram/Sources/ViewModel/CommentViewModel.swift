@@ -35,7 +35,11 @@ struct CommentViewModel {
         label.numberOfLines = 0
         label.text = comment.commentText
         label.lineBreakMode = .byWordWrapping
-        label.setWidth(width)
+
+        label.snp.makeConstraints {
+            $0.width.equalTo(width)
+        }
+
         return label.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
 }

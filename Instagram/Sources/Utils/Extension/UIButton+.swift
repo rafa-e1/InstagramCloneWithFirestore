@@ -31,7 +31,10 @@ extension UIButton {
     }
 
     func customButton(title: String) {
-        setHeight(50)
+        self.snp.makeConstraints {
+            $0.width.equalTo(50)
+        }
+        
         setTitle(title, for: .normal)
         setTitleColor(.white.withAlphaComponent(0.67), for: .normal)
         backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.2)
