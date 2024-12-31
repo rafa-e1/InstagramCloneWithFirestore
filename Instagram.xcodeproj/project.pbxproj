@@ -23,6 +23,8 @@
 		0523664A2BF83A9C000874AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052366492BF83A9C000874AE /* User.swift */; };
 		0523664C2BF83D58000874AE /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523664B2BF83D58000874AE /* ProfileHeaderViewModel.swift */; };
 		053E72452CD22373006F805B /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E72442CD22373006F805B /* ResetPasswordController.swift */; };
+		058266542D23D46C00218960 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058266532D23D46C00218960 /* UIButton+.swift */; };
+		058266562D23D7E800218960 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058266552D23D7E800218960 /* UIViewController+.swift */; };
 		05874EF52C399E7B003642AF /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EF42C399E7B003642AF /* UploadPostController.swift */; };
 		05874EF72C39A3AB003642AF /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EF62C39A3AB003642AF /* InputTextView.swift */; };
 		05874EF92C3BBB72003642AF /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05874EF82C3BBB72003642AF /* PostService.swift */; };
@@ -51,7 +53,6 @@
 		05E3DC5A2BF4519300D59D64 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC592BF4519300D59D64 /* NotificationController.swift */; };
 		05E3DC5C2BF4519900D59D64 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DC5B2BF4519900D59D64 /* ProfileController.swift */; };
 		05E3DCA92BF46A6400D59D64 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DCA82BF46A6400D59D64 /* FeedCell.swift */; };
-		05E3DCAB2BF46B3200D59D64 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3DCAA2BF46B3200D59D64 /* Extensions.swift */; };
 		05F737C82CFDA2F90030B7F5 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F737C72CFDA2F90030B7F5 /* BaseTableViewCell.swift */; };
 		05F737CA2CFDA37C0030B7F5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F737C92CFDA37C0030B7F5 /* BaseCollectionViewCell.swift */; };
 		05F737CF2CFDA3E20030B7F5 /* ReusableIdentifier+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F737CE2CFDA3E20030B7F5 /* ReusableIdentifier+.swift */; };
@@ -76,6 +77,8 @@
 		052366492BF83A9C000874AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0523664B2BF83D58000874AE /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		053E72442CD22373006F805B /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
+		058266532D23D46C00218960 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		058266552D23D7E800218960 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		05874EF42C399E7B003642AF /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
 		05874EF62C39A3AB003642AF /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		05874EF82C3BBB72003642AF /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
@@ -106,7 +109,6 @@
 		05E3DC592BF4519300D59D64 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		05E3DC5B2BF4519900D59D64 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		05E3DCA82BF46A6400D59D64 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
-		05E3DCAA2BF46B3200D59D64 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		05F737C72CFDA2F90030B7F5 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		05F737C92CFDA37C0030B7F5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		05F737CE2CFDA3E20030B7F5 /* ReusableIdentifier+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableIdentifier+.swift"; sourceTree = "<group>"; };
@@ -247,7 +249,6 @@
 			children = (
 				05F737C62CFDA2A60030B7F5 /* Base */,
 				05F737CB2CFDA3CC0030B7F5 /* Extension */,
-				05E3DCAA2BF46B3200D59D64 /* Extensions.swift */,
 				052366472BF838F0000874AE /* Constants.swift */,
 				05874EF62C39A3AB003642AF /* InputTextView.swift */,
 			);
@@ -309,8 +310,10 @@
 			isa = PBXGroup;
 			children = (
 				05F737CE2CFDA3E20030B7F5 /* ReusableIdentifier+.swift */,
+				058266532D23D46C00218960 /* UIButton+.swift */,
 				05C2EE172D041917000B336C /* UIStackView+.swift */,
 				05C2EE152D0418DD000B336C /* UIView+.swift */,
+				058266552D23D7E800218960 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -472,6 +475,8 @@
 				05E3DC5C2BF4519900D59D64 /* ProfileController.swift in Sources */,
 				0523664C2BF83D58000874AE /* ProfileHeaderViewModel.swift in Sources */,
 				05874EF72C39A3AB003642AF /* InputTextView.swift in Sources */,
+				058266542D23D46C00218960 /* UIButton+.swift in Sources */,
+				058266562D23D7E800218960 /* UIViewController+.swift in Sources */,
 				052366482BF838F0000874AE /* Constants.swift in Sources */,
 				05F737CF2CFDA3E20030B7F5 /* ReusableIdentifier+.swift in Sources */,
 				053E72452CD22373006F805B /* ResetPasswordController.swift in Sources */,
@@ -479,7 +484,6 @@
 				050F8EDC2C01D386003B7820 /* UserCellViewModel.swift in Sources */,
 				05C2EE182D041917000B336C /* UIStackView+.swift in Sources */,
 				05E3DC522BF4511D00D59D64 /* MainTabBarController.swift in Sources */,
-				05E3DCAB2BF46B3200D59D64 /* Extensions.swift in Sources */,
 				052366192BF6E0FF000874AE /* ImageUploader.swift in Sources */,
 				05E2A7892CB81C6300B5D243 /* NotificationService.swift in Sources */,
 				05874EFB2C3FAC43003642AF /* Post.swift in Sources */,
