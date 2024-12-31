@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 final class InputTextView: UITextView {
     
     // MARK: - Properties
@@ -14,42 +17,21 @@ final class InputTextView: UITextView {
     var placeholderText: String? {
         didSet { placeholderLabel.text = placeholderText }
     }
-    
-    let placeholderLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .lightGray
-        return label
-    }()
-    
+
     var placeholderShouldCenter = true {
-        didSet {
-            if placeholderShouldCenter {
-                placeholderLabel.anchor(left: leftAnchor, right: rightAnchor, paddingLeft: 8)
-                placeholderLabel.centerY(inView: self)
-            } else {
-                placeholderLabel.anchor(
-                    top: topAnchor,
-                    left: leftAnchor,
-                    paddingTop: 6,
-                    paddingLeft: 8
-                )
-            }
-        }
+        didSet { updatePlaceholderConstraints() }
     }
+
+    let placeholderLabel = UILabel()
     
-    // MARK: - Lifecycle
-    
+    // MARK: - Initializer
+
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         
-        addSubview(placeholderLabel)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleTextDidChange),
-            name: UITextView.textDidChangeNotification,
-            object: nil
-        )
+        setAddObservers()
+        setStyle()
+        setHierarchy()
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +40,44 @@ final class InputTextView: UITextView {
     
     // MARK: - Actions
     
-    @objc func handleTextDidChange() {
+    @objc private func handleTextDidChange() {
         placeholderLabel.isHidden = !text.isEmpty
+    }
+
+    // MARK: - Helpers
+
+    private func setAddObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleTextDidChange),
+            name: UITextView.textDidChangeNotification,
+            object: nil
+        )
+    }
+
+    // MARK: - UI
+
+    private func setStyle() {
+        placeholderLabel.textColor = .lightGray
+    }
+
+    private func setHierarchy() {
+        addSubview(placeholderLabel)
+    }
+
+    private func updatePlaceholderConstraints() {
+        placeholderLabel.snp.removeConstraints()
+
+        if placeholderShouldCenter {
+            placeholderLabel.snp.makeConstraints {
+                $0.centerY.trailing.equalToSuperview()
+                $0.leading.equalTo(8)
+            }
+        } else {
+            placeholderLabel.snp.makeConstraints {
+                $0.top.equalTo(8)
+                $0.leading.equalTo(6)
+            }
+        }
     }
 }
