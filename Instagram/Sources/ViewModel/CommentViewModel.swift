@@ -8,6 +8,7 @@
 import UIKit
 
 struct CommentViewModel {
+    
     private let comment: Comment
     
     var profileImageURL: URL? { return URL(string: comment.profileImageURL) }

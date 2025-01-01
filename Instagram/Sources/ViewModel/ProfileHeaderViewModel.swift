@@ -8,6 +8,7 @@
 import UIKit
 
 struct ProfileHeaderViewModel {
+    
     let user: User
     
     var fullname: String {

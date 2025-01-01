@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserCellViewModel {
+    
     private let user: User
     
     var profileImageURL: URL? {

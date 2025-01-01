@@ -20,6 +20,7 @@ enum NotificationType: Int {
 }
 
 struct Notification {
+    
     let uid: String
     var postImageURL: String?
     var postID: String?

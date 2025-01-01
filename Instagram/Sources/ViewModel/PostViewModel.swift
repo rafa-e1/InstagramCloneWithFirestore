@@ -8,6 +8,7 @@
 import UIKit
 
 struct PostViewModel {
+    
     var post: Post
 
     var userProfileImageURL: URL? { return URL(string: post.ownerImageURL) }

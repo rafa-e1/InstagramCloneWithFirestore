@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 
 struct User {
+
     let email: String
     let fullname: String
     let profileImageURL: String
@@ -32,6 +33,7 @@ struct User {
 }
 
 struct UserStats {
+
     let posts: Int
     let followers: Int
     let following: Int

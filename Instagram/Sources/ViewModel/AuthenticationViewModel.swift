@@ -18,6 +18,7 @@ protocol AuthenticationViewModel {
 }
 
 struct LoginViewModel: AuthenticationViewModel {
+
     var email: String?
     var password: String?
     
@@ -35,6 +36,7 @@ struct LoginViewModel: AuthenticationViewModel {
 }
 
 struct RegistrationViewModel: AuthenticationViewModel {
+
     var email: String?
     var password: String?
     var fullname: String?
@@ -55,6 +57,7 @@ struct RegistrationViewModel: AuthenticationViewModel {
 }
 
 struct ResetPasswordViewModel: AuthenticationViewModel {
+    
     var email: String?
 
     var formIsValid: Bool { return email?.isEmpty == false }

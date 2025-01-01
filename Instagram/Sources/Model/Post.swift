@@ -8,6 +8,7 @@
 import FirebaseFirestoreInternal
 
 struct Post {
+    
     let postID: String
     let ownerUID: String
     let ownerImageURL: String

@@ -8,6 +8,7 @@
 import FirebaseFirestoreInternal
 
 struct Comment {
+    
     let uid: String
     let username: String
     let profileImageURL: String

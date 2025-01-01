@@ -8,6 +8,7 @@
 import UIKit
 
 struct NotificationViewModel {
+    
     var notification: Notification
 
     init(notification: Notification) {
