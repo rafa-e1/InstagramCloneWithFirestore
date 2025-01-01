@@ -211,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				052366102BF6DBAE000874AE /* CustomTextField.swift */,
+				05874EF62C39A3AB003642AF /* InputTextView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -250,7 +251,6 @@
 				05F737C62CFDA2A60030B7F5 /* Base */,
 				05F737CB2CFDA3CC0030B7F5 /* Extension */,
 				052366472BF838F0000874AE /* Constants.swift */,
-				05874EF62C39A3AB003642AF /* InputTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
