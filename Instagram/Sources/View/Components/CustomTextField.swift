@@ -24,7 +24,7 @@ final class CustomTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - UI Configuration
+    // MARK: - UI
 
     private func configureTextField(placeholder: String, isPassword: Bool) {
         let spacer = UIView()
@@ -48,8 +48,6 @@ final class CustomTextField: UITextField {
             )
         }
 
-        self.snp.makeConstraints {
-            $0.height.equalTo(50)
-        }
+        self.snp.makeConstraints { $0.height.equalTo(50) }
     }
 }
