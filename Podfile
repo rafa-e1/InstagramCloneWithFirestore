@@ -15,6 +15,8 @@ target 'Instagram' do
   pod 'YPImagePicker'
   pod 'SnapKit', '~> 5.7.0'
   pod 'Then'
+  pod 'PinLayout'
+  pod 'FlexLayout'
 
 end
 
