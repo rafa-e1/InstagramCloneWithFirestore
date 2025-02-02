@@ -7,10 +7,14 @@
 
 import UIKit
 
-import SnapKit
+import PinLayout
 import Then
 
 final class CustomTextField: UITextField {
+
+    // MARK: - Properties
+
+    private let spacer = UIView()
 
     // MARK: - Initializer
 
@@ -24,12 +28,9 @@ final class CustomTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - UI
+    // MARK: - Helpers
 
     private func configureTextField(placeholder: String, isPassword: Bool) {
-        let spacer = UIView()
-        spacer.snp.makeConstraints { $0.width.equalTo(12) }
-
         self.do {
             $0.leftView = spacer
             $0.leftViewMode = .always
@@ -47,7 +48,14 @@ final class CustomTextField: UITextField {
                 attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)]
             )
         }
+    }
 
-        self.snp.makeConstraints { $0.height.equalTo(50) }
+    // MARK: - UI
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        spacer.pin.size(CGSize(width: 12, height: bounds.height))
+        pin.height(50)
     }
 }
