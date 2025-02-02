@@ -32,7 +32,7 @@ extension UIButton {
 
     func customButton(title: String) {
         self.snp.makeConstraints {
-            $0.width.equalTo(50)
+            $0.height.equalTo(50)
         }
         
         setTitle(title, for: .normal)
