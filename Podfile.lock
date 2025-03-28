@@ -1112,6 +1112,12 @@ PODS:
   - PromisesObjC (2.4.0)
   - PryntTrimmerView (4.0.2)
   - RecaptchaInterop (100.0.0)
+  - RxCocoa (6.9.0):
+    - RxRelay (= 6.9.0)
+    - RxSwift (= 6.9.0)
+  - RxRelay (6.9.0):
+    - RxSwift (= 6.9.0)
+  - RxSwift (6.9.0)
   - SDWebImage (5.19.2):
     - SDWebImage/Core (= 5.19.2)
   - SDWebImage/Core (5.19.2)
@@ -1131,6 +1137,8 @@ DEPENDENCIES:
   - FlexLayout
   - JGProgressHUD
   - PinLayout
+  - RxCocoa (= 6.9.0)
+  - RxSwift (= 6.9.0)
   - SDWebImage (~> 5.0)
   - SnapKit (~> 5.7.0)
   - Then
@@ -1163,6 +1171,9 @@ SPEC REPOS:
     - PromisesObjC
     - PryntTrimmerView
     - RecaptchaInterop
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SDWebImage
     - SnapKit
     - SteviaLayout
@@ -1196,6 +1207,9 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  RxCocoa: ac16414696ae706516be3e1ab00fcce5bdc9be8a
+  RxRelay: 6b0c930e5cef57d5fe2032571e5e65b78e3cbdb1
+  RxSwift: 31649ace6aceeb422e16ff71c60804f9c3281ed9
   SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SteviaLayout: 05424e528d643657d39ce72c786e4adf13cfc5f2
@@ -1203,6 +1217,6 @@ SPEC CHECKSUMS:
   Yoga: 636ce73bd247407928a7df089f3bc3675916b3ff
   YPImagePicker: afc81b3cffab05a6e7261c5daf80dc31b4e917b4
 
-PODFILE CHECKSUM: b3cef5541b94f1cc62f45bcf6c68143df17b503e
+PODFILE CHECKSUM: 50722783aa7230a8f99fcf05b423e230c004fd72
 
 COCOAPODS: 1.16.2

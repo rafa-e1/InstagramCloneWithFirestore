@@ -17,6 +17,8 @@ target 'Instagram' do
   pod 'Then'
   pod 'PinLayout'
   pod 'FlexLayout'
+  pod 'RxSwift', '6.9.0'
+  pod 'RxCocoa', '6.9.0'
 
 end
 
